@@ -1,0 +1,11 @@
+*.swp
+
+*.prof
+*.tix
+
+.cabal-sandbox/
+dist/
+test/data/
+
+cabal.sandbox.config
+runhaskell

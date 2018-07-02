@@ -1,0 +1,24 @@
+name:               data-standards
+version:            0.1.0.0
+stability:          pre-alpha
+synopsis:           A collection of standards representable by simple data types.
+-- description:         
+license:            MPL-2.0
+license-file:       LICENSE
+author:             Samuel May
+maintainer:         ag.eitilt@gmail.com
+copyright:          (c) 2018 Samuel May
+category:           Data
+build-type:         Simple
+extra-source-files: ChangeLog.md
+cabal-version:      >=1.10
+
+-- source-repository
+
+library
+  -- exposed-modules:     
+  -- other-modules:       
+  -- other-extensions:    
+  build-depends:    base >=4.9 && <4.10
+  hs-source-dirs:   src
+  default-language: Haskell2010
