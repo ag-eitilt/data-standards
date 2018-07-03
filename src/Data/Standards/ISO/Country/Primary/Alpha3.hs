@@ -8,6 +8,8 @@
  -}
 module Data.Standards.ISO.Country.Primary.Alpha3 where
 
+import qualified Data.Hashable as H
+
 -- | The official codes for countries with less collisions and therefore more
 -- similar to the full name, translated into a type-safe representation.
 data Alpha3
@@ -284,3 +286,7 @@ data Alpha3
     | ZAF  -- ^ South Africa
     | ZMB  -- ^ Zambia
     | ZWE  -- ^ Zimbabwe
+  deriving ( Eq, Show, Read, Enum, Bounded )
+-- | Convert the country code into a unique 'Int' value.
+instance H.Hashable Alpha3 where
+    hashWithSalt = H.hashUsing fromEnum

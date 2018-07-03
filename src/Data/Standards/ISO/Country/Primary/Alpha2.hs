@@ -8,6 +8,8 @@
  -}
 module Data.Standards.ISO.Country.Primary.Alpha2 where
 
+import qualified Data.Hashable as H
+
 -- | The official, recommended codes for countries, translated into a type-safe
 -- representation.
 data Alpha2
@@ -283,3 +285,7 @@ data Alpha2
     | ZA  -- ^ South Africa
     | ZM  -- ^ Zambia
     | ZW  -- ^ Zimbabwe
+  deriving ( Eq, Show, Read, Enum, Bounded )
+-- | Convert the country code into a unique 'Int' value.
+instance H.Hashable Alpha2 where
+    hashWithSalt = H.hashUsing fromEnum

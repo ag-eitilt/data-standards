@@ -8,6 +8,8 @@
  -}
 module Data.Standards.ISO.Country.Primary.Numeric where
 
+import qualified Data.Hashable as H
+
 -- | The official numeric codes for countries, preventing collisions but
 -- using an arbitrary mapping, translated into a type-safe representation.
 data Numeric
@@ -277,3 +279,7 @@ data Numeric
     | C882  -- ^ Samoa
     | C887  -- ^ Yemen
     | C894  -- ^ Zambia
+  deriving ( Eq, Show, Read, Enum, Bounded )
+-- | Convert the country code into a unique 'Int' value.
+instance H.Hashable Numeric where
+    hashWithSalt = H.hashUsing fromEnum

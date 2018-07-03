@@ -9,7 +9,8 @@
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary
-    ( A2.Alpha2 ( .. )
+    ( module Data.Standards.ISO.Country.Primary.Translation
+    , A2.Alpha2 ( .. )
     , A3.Alpha3 ( .. )
     , N.Numeric ( .. )
     ) where
@@ -17,3 +18,5 @@ module Data.Standards.ISO.Country.Primary
 import qualified Data.Standards.ISO.Country.Primary.Alpha2 as A2
 import qualified Data.Standards.ISO.Country.Primary.Alpha3 as A3
 import qualified Data.Standards.ISO.Country.Primary.Numeric as N
+
+import Data.Standards.ISO.Country.Primary.Translation
