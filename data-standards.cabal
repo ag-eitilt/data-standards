@@ -16,7 +16,10 @@ cabal-version:      >=1.10
 -- source-repository
 
 library
-  -- exposed-modules:     
+  exposed-modules:  Data.Standards.ISO.Country.Primary
+                  , Data.Standards.ISO.Country.Primary.Alpha2
+                  , Data.Standards.ISO.Country.Primary.Alpha3
+                  , Data.Standards.ISO.Country.Primary.Numeric
   -- other-modules:       
   -- other-extensions:    
   build-depends:    base >=4.9 && <4.10
