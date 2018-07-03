@@ -8,10 +8,13 @@
  -}
 module Data.Standards.ISO.Country.Primary.Numeric where
 
+import qualified Data.Standards.ISO.Country.Primary.Common as C
+
 import qualified Data.Hashable as H
 
 -- | The official numeric codes for countries, preventing collisions but
 -- using an arbitrary mapping, translated into a type-safe representation.
+-- Unless otherwise specified, all codes are 'Official'.
 data Numeric
     = C004  -- ^ Afghanistan
     | C008  -- ^ Albania
@@ -91,6 +94,7 @@ data Numeric
     | C242  -- ^ Fiji
     | C246  -- ^ Finland
     | C248  -- ^ Ãland Islands
+    | C249  -- ^ 'Withdrawn': France, Metropolitan
 
     | C250  -- ^ France
     | C254  -- ^ French Guiana
@@ -262,6 +266,7 @@ data Numeric
     | C800  -- ^ Uganda
     | C804  -- ^ Ukraine
     | C807  -- ^ Macedonia (the former Yugoslav Republic of)
+    | C810  -- ^ 'Withdrawn': USSR
     | C818  -- ^ Egypt
     | C826  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
     | C831  -- ^ Guernsey
@@ -283,3 +288,9 @@ data Numeric
 -- | Convert the country code into a unique 'Int' value.
 instance H.Hashable Numeric where
     hashWithSalt = H.hashUsing fromEnum
+
+-- | The stability of any particular country code.
+codeStatus :: Numeric -> C.Status
+codeStatus C249 = C.Withdrawn
+codeStatus C810 = C.Withdrawn
+codeStatus _ = C.Official

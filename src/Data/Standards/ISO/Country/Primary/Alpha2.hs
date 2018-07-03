@@ -8,12 +8,15 @@
  -}
 module Data.Standards.ISO.Country.Primary.Alpha2 where
 
+import qualified Data.Standards.ISO.Country.Primary.Common as C
+
 import qualified Data.Hashable as H
 
 -- | The official, recommended codes for countries, translated into a type-safe
--- representation.
+-- representation.  Unless otherwise specified, all codes are 'Official'.
 data Alpha2
-    = AD  -- ^ Andorra
+    = AC  -- ^ 'ExceptionalReservation': Ascension Island
+    | AD  -- ^ Andorra
     | AE  -- ^ United Arab Emirates (the)
     | AF  -- ^ Afghanistan
     | AG  -- ^ Antigua and Barbuda
@@ -64,6 +67,7 @@ data Alpha2
     | CM  -- ^ Cameroon
     | CN  -- ^ China
     | CO  -- ^ Colombia
+    | CP  -- ^ 'ExceptionalReservation': Clipperton Island
     | CR  -- ^ Costa Rica
     | CU  -- ^ Cuba
     | CV  -- ^ Cabo Verde
@@ -73,12 +77,14 @@ data Alpha2
     | CZ  -- ^ Czechia
 
     | DE  -- ^ Germany
+    | DG  -- ^ 'ExceptionalReservation': Diego Garcia
     | DJ  -- ^ Djibouti
     | DK  -- ^ Denmark
     | DM  -- ^ Dominica
     | DO  -- ^ Dominican Republic (the)
     | DZ  -- ^ Algeria
 
+    | EA  -- ^ 'ExceptionalReservation': Ceuta & Melilla
     | EC  -- ^ Ecuador
     | EE  -- ^ Estonia
     | EG  -- ^ Egypt
@@ -86,6 +92,8 @@ data Alpha2
     | ER  -- ^ Eritrea
     | ES  -- ^ Spain
     | ET  -- ^ Ethiopia
+    | EU  -- ^ 'ExceptionalReservation': European Union
+    | EZ  -- ^ 'ExceptionalReservation': Eurozone
 
     | FI  -- ^ Finland
     | FJ  -- ^ Fiji
@@ -93,6 +101,7 @@ data Alpha2
     | FM  -- ^ Micronesia (Federated States of)
     | FO  -- ^ Faroe Islands (the)
     | FR  -- ^ France
+    | FX  -- ^ 'ExceptionalReservation': France, Metropolitan
 
     | GA  -- ^ Gabon
     | GB  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
@@ -121,6 +130,7 @@ data Alpha2
     | HT  -- ^ Haiti
     | HU  -- ^ Hungary
 
+    | IC  -- ^ 'ExceptionalReservation': Canary Islands
     | ID  -- ^ Indonesia
     | IE  -- ^ Ireland
     | IL  -- ^ Israel
@@ -239,11 +249,13 @@ data Alpha2
     | SR  -- ^ Suriname
     | SS  -- ^ South Sudan
     | ST  -- ^ Sao Tome and Principe
+    | SU  -- ^ 'ExceptionalReservation': USSR
     | SV  -- ^ El Salvador
     | SX  -- ^ Sint Maarten (Dutch part)
     | SY  -- ^ Syrian Arab Republic
     | SZ  -- ^ Swaziland
 
+    | TA  -- ^ 'ExceptionalReservation': Tristan da Cunha
     | TC  -- ^ Turks and Caicos Islands (the)
     | TD  -- ^ Chad
     | TF  -- ^ French Southern Territories (the)
@@ -263,7 +275,9 @@ data Alpha2
 
     | UA  -- ^ Ukraine
     | UG  -- ^ Uganda
+    | UK  -- ^ 'ExceptionalReservation': United Kingdom
     | UM  -- ^ United States Minor Outlying Islands (the)
+    | UN  -- ^ 'ExceptionalReservation': United Nations
     | US  -- ^ United States of America (the)
     | UY  -- ^ Uruguay
     | UZ  -- ^ Uzbekistan
@@ -289,3 +303,19 @@ data Alpha2
 -- | Convert the country code into a unique 'Int' value.
 instance H.Hashable Alpha2 where
     hashWithSalt = H.hashUsing fromEnum
+
+-- | The stability of any particular country code.
+codeStatus :: Alpha2 -> C.Status
+codeStatus AC = C.ExceptionalReservation
+codeStatus CP = C.ExceptionalReservation
+codeStatus DG = C.ExceptionalReservation
+codeStatus EA = C.ExceptionalReservation
+codeStatus EU = C.ExceptionalReservation
+codeStatus EZ = C.ExceptionalReservation
+codeStatus FX = C.ExceptionalReservation
+codeStatus IC = C.ExceptionalReservation
+codeStatus SU = C.ExceptionalReservation
+codeStatus TA = C.ExceptionalReservation
+codeStatus UK = C.ExceptionalReservation
+codeStatus UN = C.ExceptionalReservation
+codeStatus _ = C.Official

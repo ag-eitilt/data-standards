@@ -8,10 +8,13 @@
  -}
 module Data.Standards.ISO.Country.Primary.Alpha3 where
 
+import qualified Data.Standards.ISO.Country.Primary.Common as C
+
 import qualified Data.Hashable as H
 
 -- | The official codes for countries with less collisions and therefore more
--- similar to the full name, translated into a type-safe representation.
+-- similar to the full name, translated into a type-safe representation.  Unless
+-- otherwise specified, all codes are 'Official'.
 data Alpha3
     = ABW  -- ^ Aruba
     | AFG  -- ^ Afghanistan
@@ -23,6 +26,7 @@ data Alpha3
     | ARE  -- ^ United Arab Emirates (the)
     | ARG  -- ^ Argentina
     | ARM  -- ^ Armenia
+    | ASC  -- ^ 'ExceptionalReservation': Ascension Island
     | ASM  -- ^ American Samoa
     | ATA  -- ^ Antarctica
     | ATF  -- ^ French Southern Territories (the)
@@ -66,6 +70,7 @@ data Alpha3
     | COK  -- ^ Cook Islands (the)
     | COL  -- ^ Colombia
     | COM  -- ^ Comoros (the)
+    | CPT  -- ^ 'ExceptionalReservation': Clipperton Island
     | CPV  -- ^ Cabo Verde
     | CRI  -- ^ Costa Rica
     | CUB  -- ^ Cuba
@@ -76,6 +81,7 @@ data Alpha3
     | CZE  -- ^ Czechia
 
     | DEU  -- ^ Germany
+    | DGA  -- ^ 'ExceptionalReservation': Diego Garcia
     | DJI  -- ^ Djibouti
     | DMA  -- ^ Dominica
     | DNK  -- ^ Denmark
@@ -96,6 +102,7 @@ data Alpha3
     | FRA  -- ^ France
     | FRO  -- ^ Faroe Islands (the)
     | FSM  -- ^ Micronesia (Federated States of)
+    | FXX  -- ^ 'ExceptionalReservation': France, Metropolitan
 
     | GAB  -- ^ Gabon
     | GBR  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
@@ -238,6 +245,7 @@ data Alpha3
     | SRB  -- ^ Serbia
     | SSD  -- ^ South Sudan
     | STP  -- ^ Sao Tome and Principe
+    | SUN  -- ^ 'ExceptionalReservation': USSR
     | SUR  -- ^ Suriname
     | SVK  -- ^ Slovakia
     | SVN  -- ^ Slovenia
@@ -247,6 +255,7 @@ data Alpha3
     | SYC  -- ^ Seychelles
     | SYR  -- ^ Syrian Arab Republic
 
+    | TAA  -- ^ 'ExceptionalReservation': Tristan da Cunha
     | TCA  -- ^ Turks and Caicos Islands (the)
     | TCD  -- ^ Chad
     | TGO  -- ^ Togo
@@ -290,3 +299,7 @@ data Alpha3
 -- | Convert the country code into a unique 'Int' value.
 instance H.Hashable Alpha3 where
     hashWithSalt = H.hashUsing fromEnum
+
+-- | The stability of any particular country code.
+codeStatus :: Alpha3 -> C.Status
+codeStatus _ = C.Official

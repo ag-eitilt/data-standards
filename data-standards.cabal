@@ -21,7 +21,7 @@ library
                   , Data.Standards.ISO.Country.Primary.Alpha3
                   , Data.Standards.ISO.Country.Primary.Numeric
                   , Data.Standards.ISO.Country.Primary.Translation
-  -- other-modules:       
+  other-modules:    Data.Standards.ISO.Country.Primary.Common
   -- other-extensions:    
   build-depends:    base >=4.9 && <4.10
                   , hashable
