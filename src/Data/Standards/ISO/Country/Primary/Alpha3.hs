@@ -430,7 +430,6 @@ data Alpha3
     | ZRE  -- ^ 'IndeterminateReservation': Zaire (road vehicles)
     | ZWE  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
--- | Convert the country code into a unique 'Int' value.
 instance H.Hashable Alpha3 where
     hashWithSalt = H.hashUsing fromEnum
 

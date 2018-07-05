@@ -402,7 +402,6 @@ data Alpha2
     | ZR  -- ^ 'TransitionalReservation': Zaire
     | ZW  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
--- | Convert the country code into a unique 'Int' value.
 instance H.Hashable Alpha2 where
     hashWithSalt = H.hashUsing fromEnum
 
