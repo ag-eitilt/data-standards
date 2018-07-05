@@ -27,11 +27,44 @@ import qualified Data.Hashable as H
 {-# DEPRECATED YUG "Use ISO 3166-3 code YUCS" #-}
 {-# DEPRECATED ZAR "Use new code COD or ISO 3166-3 code ZRCD" #-}
 
+{-# DEPRECATED ADN "Use new code YEM" #-}
+{-# DEPRECATED BDS "Use official code BRB" #-}
+{-# DEPRECATED BRU "Use official code BRN" #-}
+{-# DEPRECATED CDN "Use official code CAN" #-}
+{-# DEPRECATED EAK "Use official code KEN" #-}
+{-# DEPRECATED EAT "Use code for entire country TZA" #-}
+{-# DEPRECATED EAU "Use official code UGA" #-}
+{-# DEPRECATED EAZ "Use code for entire country TZA" #-}
+{-# DEPRECATED GBA "Use code for entire region GGY" #-}
+{-# DEPRECATED GBG "Use official code GGY" #-}
+{-# DEPRECATED GBJ "Use official code JEY" #-}
+{-# DEPRECATED GBM "Use official code IMN" #-}
+{-# DEPRECATED GBZ "Use official code GIB" #-}
+{-# DEPRECATED GCA "Use official code GTM" #-}
+{-# DEPRECATED HKJ "Use official code JOR" #-}
+{-# DEPRECATED MAL "Use official code MYS" #-}
+{-# DEPRECATED RCA "Use official code CAF" #-}
+{-# DEPRECATED RCB "Use official code COG" #-}
+{-# DEPRECATED RCH "Use official code CHL" #-}
+{-# DEPRECATED RMM "Use official code MLI" #-}
+{-# DEPRECATED RNR "Use official code ZMB" #-}
+{-# DEPRECATED ROK "Use official code KOR" #-}
+{-# DEPRECATED RSM "Use official code SMR" #-}
+{-# DEPRECATED RSR "Use official code ZWE" #-}
+{-# DEPRECATED SLO "Use official code SVN" #-}
+{-# DEPRECATED SME "Use official code SUR" #-}
+{-# DEPRECATED TMN "Use official code TKN" #-}
+{-# DEPRECATED WAG "Use official code GMB" #-}
+{-# DEPRECATED WAL "Use official code SLE" #-}
+{-# DEPRECATED WAN "Use official code NGA" #-}
+{-# DEPRECATED ZRE "Use official code ZAR, new code COD or ISO 3166-3 code ZRCD" #-}
+
 -- | The official codes for countries with less collisions and therefore more
 -- similar to the full name, translated into a type-safe representation.  Unless
 -- otherwise specified, all codes are 'Official'.
 data Alpha3
     = ABW  -- ^ Aruba
+    | ADN  -- ^ 'IndeterminateReservation': Aden (road vehicles)
     | AFG  -- ^ Afghanistan
     | AGO  -- ^ Angola
     | AIA  -- ^ Anguilla
@@ -52,6 +85,7 @@ data Alpha3
     | AZE  -- ^ Azerbaijan
 
     | BDI  -- ^ Burundi
+    | BDS  -- ^ 'IndeterminateReservation': Barbados (road vehicles)
     | BEL  -- ^ Belgium
     | BEN  -- ^ Benin
     | BES  -- ^ Bonaire, Sint Eustatius and Saba
@@ -69,6 +103,7 @@ data Alpha3
     | BRA  -- ^ Brazil
     | BRB  -- ^ Barbados
     | BRN  -- ^ Brunei Darussalam
+    | BRU  -- ^ 'IndeterminateReservation': Brunai (road vehicles)
     | BTN  -- ^ Bhutan
     | BUR  -- ^ 'TransitionalReservation': Burma
     | BVT  -- ^ Bouvet Island
@@ -78,6 +113,7 @@ data Alpha3
     | CAF  -- ^ Central African Republic (the)
     | CAN  -- ^ Canada
     | CCK  -- ^ Cocos (Keeling) Islands (the)
+    | CDN  -- ^ 'IndeterminateReservation': Canada (road vehicles)
     | CHE  -- ^ Switzerland
     | CHL  -- ^ Chile
     | CHN  -- ^ China
@@ -107,6 +143,10 @@ data Alpha3
     | DOM  -- ^ Dominican Republic (the)
     | DZA  -- ^ Algeria
 
+    | EAK  -- ^ 'IndeterminateReservation': Kenya (road vehicles)
+    | EAT  -- ^ 'IndeterminateReservation': Tanganyika (road vehicles)
+    | EAU  -- ^ 'IndeterminateReservation': Uganda (road vehicles)
+    | EAZ  -- ^ 'IndeterminateReservation': Zanzibar (road vehicles)
     | ECU  -- ^ Ecuador
     | EGY  -- ^ Egypt
     | ERI  -- ^ Eritrea
@@ -124,7 +164,13 @@ data Alpha3
     | FXX  -- ^ 'ExceptionalReservation': France, Metropolitan
 
     | GAB  -- ^ Gabon
+    | GBA  -- ^ 'IndeterminateReservation': Alderney (road vehicles)
+    | GBG  -- ^ 'IndeterminateReservation': Guernsey (road vehicles)
+    | GBJ  -- ^ 'IndeterminateReservation': Jersey (road vehicles)
+    | GBM  -- ^ 'IndeterminateReservation': Isle of Man (road vehicles)
     | GBR  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
+    | GBZ  -- ^ 'IndeterminateReservation': Gibraltar (road vehicles)
+    | GCA  -- ^ 'IndeterminateReservation': Guatemala (road vehicles)
     | GEO  -- ^ Georgia
     | GGY  -- ^ Guernsey
     | GHA  -- ^ Ghana
@@ -142,6 +188,7 @@ data Alpha3
     | GUM  -- ^ Guam
     | GUY  -- ^ Guyana
 
+    | HKJ  -- ^ 'IndeterminateReservation': Jordan (road vehicles)
     | HKG  -- ^ Hong Kong
     | HMD  -- ^ Heard Island and McDonald Islands
     | HND  -- ^ Honduras
@@ -188,6 +235,7 @@ data Alpha3
 
     | MAC  -- ^ Macao
     | MAF  -- ^ Saint Martin (French part)
+    | MAL  -- ^ 'IndeterminateReservation': Malaysia (road vehicles)
     | MAR  -- ^ Morocco
     | MCO  -- ^ Monaco
     | MDA  -- ^ Moldova (the Republic of)
@@ -244,9 +292,17 @@ data Alpha3
 
     | QAT  -- ^ Qatar
 
+    | RCA  -- ^ 'IndeterminateReservation': Central African Republic (road vehicles)
+    | RCB  -- ^ 'IndeterminateReservation': Congo, People's Republic of (road vehicles)
+    | RCH  -- ^ 'IndeterminateReservation': Chile (road vehicles)
     | REU  -- ^ Réunion
+    | RMM  -- ^ 'IndeterminateReservation': Mali (road vehicles)
+    | RNR  -- ^ 'IndeterminateReservation': Zambia (road vehicles)
+    | ROK  -- ^ 'IndeterminateReservation': Korea, Republic of (road vehicles)
     | ROM  -- ^ 'TransitionalReservation': Romania
     | ROU  -- ^ Romania
+    | RSM  -- ^ 'IndeterminateReservation': San Marino (road vehicles)
+    | RSR  -- ^ 'IndeterminateReservation': Zimbabwe (road vehicles)
     | RUS  -- ^ Russian Federation (the)
     | RWA  -- ^ Rwanda
 
@@ -260,7 +316,9 @@ data Alpha3
     | SJM  -- ^ Svalbard and Jan Mayen
     | SLB  -- ^ Solomon Islands
     | SLE  -- ^ Sierra Leone
+    | SLO  -- ^ 'IndeterminateReservation': Slovenia (road vehicles)
     | SLV  -- ^ El Salvador
+    | SME  -- ^ 'IndeterminateReservation': Suriname (road vehicles)
     | SMR  -- ^ San Marino
     | SOM  -- ^ Somalia
     | SPM  -- ^ Saint Pierre and Miquelon
@@ -286,6 +344,7 @@ data Alpha3
     | TKL  -- ^ Tokelau
     | TKM  -- ^ Turkmenistan
     | TLS  -- ^ Timor-Leste
+    | TMN  -- ^ 'IndeterminateReservation': Turkmenistan (road vehicles)
     | TMP  -- ^ 'TransitionalReservation': East Timor
     | TON  -- ^ Tonga
     | TTO  -- ^ Trinidad and Tobago
@@ -310,6 +369,9 @@ data Alpha3
     | VNM  -- ^ Viet Nam
     | VUT  -- ^ Vanuatu
 
+    | WAG  -- ^ 'IndeterminateReservation': Gambia (road vehicles)
+    | WAL  -- ^ 'IndeterminateReservation': Sierra Leone (road vehicles)
+    | WAN  -- ^ 'IndeterminateReservation': Nigeria (road vehicles)
     | WLF  -- ^ Wallis and Futuna
     | WSM  -- ^ Samoa
 
@@ -319,6 +381,7 @@ data Alpha3
     | ZAF  -- ^ South Africa
     | ZAR  -- ^ 'TransitionalReservation': Zaire
     | ZMB  -- ^ Zambia
+    | ZRE  -- ^ 'IndeterminateReservation': Zaire (road vehicles)
     | ZWE  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
 -- | Convert the country code into a unique 'Int' value.
@@ -327,20 +390,51 @@ instance H.Hashable Alpha3 where
 
 -- | The stability of any particular country code.
 codeStatus :: Alpha3 -> Status
+codeStatus ADN = IndeterminateReservation
 codeStatus ANT = TransitionalReservation
 codeStatus ASC = ExceptionalReservation
+codeStatus BDS = IndeterminateReservation
+codeStatus BRU = IndeterminateReservation
 codeStatus BUR = TransitionalReservation
 codeStatus BYS = TransitionalReservation
+codeStatus CDN = IndeterminateReservation
 codeStatus CPT = ExceptionalReservation
 codeStatus CSK = TransitionalReservation
 codeStatus DGA = ExceptionalReservation
+codeStatus EAK = IndeterminateReservation
+codeStatus EAT = IndeterminateReservation
+codeStatus EAU = IndeterminateReservation
+codeStatus EAZ = IndeterminateReservation
 codeStatus FXX = ExceptionalReservation
+codeStatus GBA = IndeterminateReservation
+codeStatus GBG = IndeterminateReservation
+codeStatus GBJ = IndeterminateReservation
+codeStatus GBM = IndeterminateReservation
+codeStatus GBZ = IndeterminateReservation
+codeStatus GCA = IndeterminateReservation
+codeStatus HKJ = IndeterminateReservation
+codeStatus MAL = IndeterminateReservation
 codeStatus NTZ = TransitionalReservation
+codeStatus RCA = IndeterminateReservation
+codeStatus RCB = IndeterminateReservation
+codeStatus RCH = IndeterminateReservation
+codeStatus RMM = IndeterminateReservation
+codeStatus RNR = IndeterminateReservation
+codeStatus ROK = IndeterminateReservation
 codeStatus ROM = TransitionalReservation
+codeStatus RSM = IndeterminateReservation
+codeStatus RSR = IndeterminateReservation
 codeStatus SCG = TransitionalReservation
+codeStatus SLO = IndeterminateReservation
+codeStatus SME = IndeterminateReservation
 codeStatus SUN = ExceptionalReservation
 codeStatus TAA = ExceptionalReservation
+codeStatus TMN = IndeterminateReservation
 codeStatus TMP = TransitionalReservation
+codeStatus WAG = IndeterminateReservation
+codeStatus WAL = IndeterminateReservation
+codeStatus WAN = IndeterminateReservation
 codeStatus YUG = TransitionalReservation
 codeStatus ZAR = TransitionalReservation
+codeStatus ZRE = IndeterminateReservation
 codeStatus _ = Official

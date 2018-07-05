@@ -26,6 +26,26 @@ import qualified Data.Hashable as H
 {-# DEPRECATED YU "Use ISO 3166-3 code YUCS" #-}
 {-# DEPRECATED ZR "Use new code CD or ISO 3166-3 code ZRCD" #-}
 
+{-# DEPRECATED DY "Use official code BJ" #-}
+{-# DEPRECATED EW "Use official code EE" #-}
+{-# DEPRECATED FL "Use official code LI" #-}
+{-# DEPRECATED JA "Use official code JM" #-}
+{-# DEPRECATED LF "Use code for entire country LY" #-}
+{-# DEPRECATED PI "Use official code PH" #-}
+{-# DEPRECATED RA "Use official code AR" #-}
+{-# DEPRECATED RB "Use official code BO or BW, respectively" #-}
+{-# DEPRECATED RC "Use official code CN" #-}
+{-# DEPRECATED RH "Use official code HT" #-}
+{-# DEPRECATED RI "Use official code ID" #-}
+{-# DEPRECATED RM "Use official code MG" #-}
+{-# DEPRECATED RN "Use official code NE" #-}
+{-# DEPRECATED RP "Use official code PH" #-}
+{-# DEPRECATED SF "Use official code FI" #-}
+{-# DEPRECATED WG "Use official code GD" #-}
+{-# DEPRECATED WL "Use official code LC" #-}
+{-# DEPRECATED WV "Use official code VC" #-}
+{-# DEPRECATED YV "Use official code VE" #-}
+
 -- | The official, recommended codes for countries, translated into a type-safe
 -- representation.  Unless otherwise specified, all codes are 'Official'.
 data Alpha2
@@ -99,11 +119,13 @@ data Alpha2
     | DK  -- ^ Denmark
     | DM  -- ^ Dominica
     | DO  -- ^ Dominican Republic (the)
+    | DY  -- ^ 'IndeterminateReservation': Benin (road vehicles)
     | DZ  -- ^ Algeria
 
     | EA  -- ^ 'ExceptionalReservation': Ceuta & Melilla
     | EC  -- ^ Ecuador
     | EE  -- ^ Estonia
+    | EW  -- ^ 'IndeterminateReservation': Estonia (road vehicles)
     | EG  -- ^ Egypt
     | EH  -- ^ Western Sahara
     | ER  -- ^ Eritrea
@@ -115,6 +137,7 @@ data Alpha2
     | FI  -- ^ Finland
     | FJ  -- ^ Fiji
     | FK  -- ^ Falkland Islands (the) [Malvinas]
+    | FL  -- ^ 'IndeterminateReservation': Liechtenstein (road vehicles)
     | FM  -- ^ Micronesia (Federated States of)
     | FO  -- ^ Faroe Islands (the)
     | FR  -- ^ France
@@ -158,6 +181,8 @@ data Alpha2
     | IR  -- ^ Iran (Islamic Republic of)
     | IS  -- ^ Iceland
     | IT  -- ^ Italy
+
+    | JA  -- ^ 'IndeterminateReservation': Jamaica (road vehicles)
     | JE  -- ^ Jersey
     | JM  -- ^ Jamaica
     | JO  -- ^ Jordan
@@ -178,6 +203,7 @@ data Alpha2
     | LA  -- ^ Lao People's Democratic Republic (the)
     | LB  -- ^ Lebanon
     | LC  -- ^ Saint Lucia
+    | LF  -- ^ 'IndeterminateReservation': Lybia Fezzan (road vehicles)
     | LI  -- ^ Liechtenstein
     | LK  -- ^ Sri Lanka
     | LR  -- ^ Liberia
@@ -232,6 +258,7 @@ data Alpha2
     | PF  -- ^ French Polynesia
     | PG  -- ^ Papua New Guinea
     | PH  -- ^ Philippines (the)
+    | PI  -- ^ 'IndeterminateReservation': Philippines (road vehicles)
     | PK  -- ^ Pakistan
     | PL  -- ^ Poland
     | PM  -- ^ Saint Pierre and Miquelon
@@ -244,8 +271,16 @@ data Alpha2
 
     | QA  -- ^ Qatar
 
+    | RA  -- ^ 'IndeterminateReservation': Argentina (road vehicles)
+    | RB  -- ^ 'IndeterminateReservation': Bolivia & Botswana (road vehicles)
+    | RC  -- ^ 'IndeterminateReservation': China (road vehicles)
     | RE  -- ^ Réunion
+    | RH  -- ^ 'IndeterminateReservation': Haiti (road vehicles)
+    | RI  -- ^ 'IndeterminateReservation': Indonesia (road vehicles)
+    | RM  -- ^ 'IndeterminateReservation': Madagascar (road vehicles)
+    | RN  -- ^ 'IndeterminateReservation': Niger (road vehicles)
     | RO  -- ^ Romania
+    | RP  -- ^ 'IndeterminateReservation': Philippines (road vehicles)
     | RS  -- ^ Serbia
     | RU  -- ^ Russian Federation (the)
     | RW  -- ^ Rwanda
@@ -255,6 +290,7 @@ data Alpha2
     | SC  -- ^ Seychelles
     | SD  -- ^ Sudan (the)
     | SE  -- ^ Sweden
+    | SF  -- ^ 'IndeterminateReservation': Finland
     | SG  -- ^ Singapore
     | SH  -- ^ Saint Helena, Ascension and Tristan da Cunha
     | SI  -- ^ Slovenia
@@ -310,11 +346,15 @@ data Alpha2
     | VU  -- ^ Vanuatu
 
     | WF  -- ^ Wallis and Futuna
+    | WG  -- ^ 'IndeterminateReservation': Grenada (road vehicles)
+    | WL  -- ^ 'IndeterminateReservation': Saint Lucia (road vehicles)
     | WS  -- ^ Samoa
+    | WV  -- ^ 'IndeterminateReservation': Saint Vincent (road vehicles)
 
     | YE  -- ^ Yemen
     | YT  -- ^ Mayotte
     | YU  -- ^ 'TransitionalReservation': Yugoslavia
+    | YV  -- ^ 'IndeterminateReservation': Venezuela (road vehicles)
 
     | ZA  -- ^ South Africa
     | ZM  -- ^ Zambia
@@ -333,17 +373,36 @@ codeStatus BU = TransitionalReservation
 codeStatus CP = ExceptionalReservation
 codeStatus CS = TransitionalReservation
 codeStatus DG = ExceptionalReservation
+codeStatus DY = IndeterminateReservation
 codeStatus EA = ExceptionalReservation
+codeStatus EW = IndeterminateReservation
 codeStatus EU = ExceptionalReservation
 codeStatus EZ = ExceptionalReservation
+codeStatus FL = IndeterminateReservation
 codeStatus FX = ExceptionalReservation
 codeStatus IC = ExceptionalReservation
+codeStatus JA = IndeterminateReservation
+codeStatus LF = IndeterminateReservation
 codeStatus NT = TransitionalReservation
+codeStatus PI = IndeterminateReservation
+codeStatus RA = IndeterminateReservation
+codeStatus RB = IndeterminateReservation
+codeStatus RC = IndeterminateReservation
+codeStatus RH = IndeterminateReservation
+codeStatus RI = IndeterminateReservation
+codeStatus RM = IndeterminateReservation
+codeStatus RN = IndeterminateReservation
+codeStatus RP = IndeterminateReservation
+codeStatus SF = IndeterminateReservation
 codeStatus SU = ExceptionalReservation
 codeStatus TA = ExceptionalReservation
 codeStatus TP = TransitionalReservation
 codeStatus UK = ExceptionalReservation
 codeStatus UN = ExceptionalReservation
+codeStatus WG = IndeterminateReservation
+codeStatus WL = IndeterminateReservation
+codeStatus WV = IndeterminateReservation
 codeStatus YU = TransitionalReservation
+codeStatus YV = IndeterminateReservation
 codeStatus ZR = TransitionalReservation
 codeStatus _ = Official
