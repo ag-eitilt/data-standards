@@ -59,6 +59,8 @@ import qualified Data.Hashable as H
 {-# DEPRECATED WAN "Use official code NGA" #-}
 {-# DEPRECATED ZRE "Use official code ZAR, new code COD or ISO 3166-3 code ZRCD" #-}
 
+{-# WARNING GBD,GBN,GBO,GBP,GBS,UNA,UNK,UNO "Not an official ISO 3166-1 code" #-}
+
 -- | The official codes for countries with less collisions and therefore more
 -- similar to the full name, translated into a type-safe representation.  Unless
 -- otherwise specified, all codes are 'Official'.
@@ -165,10 +167,15 @@ data Alpha3
 
     | GAB  -- ^ Gabon
     | GBA  -- ^ 'IndeterminateReservation': Alderney (road vehicles)
+    | GBD  -- ^ 'NotInUse': British Overseas Territories (passport)
     | GBG  -- ^ 'IndeterminateReservation': Guernsey (road vehicles)
     | GBJ  -- ^ 'IndeterminateReservation': Jersey (road vehicles)
     | GBM  -- ^ 'IndeterminateReservation': Isle of Man (road vehicles)
+    | GBN  -- ^ 'NotInUse': Overseas British national (passport)
+    | GBO  -- ^ 'NotInUse': Overseas Britisn citizen (passport)
+    | GBP  -- ^ 'NotInUse': British protected person (passport)
     | GBR  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
+    | GBS  -- ^ 'NotInUse': British subject (passport)
     | GBZ  -- ^ 'IndeterminateReservation': Gibraltar (road vehicles)
     | GCA  -- ^ 'IndeterminateReservation': Guatemala (road vehicles)
     | GEO  -- ^ Georgia
@@ -357,6 +364,9 @@ data Alpha3
     | UGA  -- ^ Uganda
     | UKR  -- ^ Ukraine
     | UMI  -- ^ United States Minor Outlying Islands (the)
+    | UNA  -- ^ 'NotInUse': United Nations Specialized Agency (passport)
+    | UNK  -- ^ 'NotInUse': United Nations Interim Administration in Kosovo (passport)
+    | UNO  -- ^ 'NotInUse': United Nations (passport)
     | URY  -- ^ Uruguay
     | USA  -- ^ United States of America (the)
     | UZB  -- ^ Uzbekistan
@@ -407,9 +417,14 @@ codeStatus EAU = IndeterminateReservation
 codeStatus EAZ = IndeterminateReservation
 codeStatus FXX = ExceptionalReservation
 codeStatus GBA = IndeterminateReservation
+codeStatus GBD = NotInUse
 codeStatus GBG = IndeterminateReservation
 codeStatus GBJ = IndeterminateReservation
 codeStatus GBM = IndeterminateReservation
+codeStatus GBN = NotInUse
+codeStatus GBO = NotInUse
+codeStatus GBP = NotInUse
+codeStatus GBS = NotInUse
 codeStatus GBZ = IndeterminateReservation
 codeStatus GCA = IndeterminateReservation
 codeStatus HKJ = IndeterminateReservation
@@ -431,6 +446,9 @@ codeStatus SUN = ExceptionalReservation
 codeStatus TAA = ExceptionalReservation
 codeStatus TMN = IndeterminateReservation
 codeStatus TMP = TransitionalReservation
+codeStatus UNA = NotInUse
+codeStatus UNK = NotInUse
+codeStatus UNO = NotInUse
 codeStatus WAG = IndeterminateReservation
 codeStatus WAL = IndeterminateReservation
 codeStatus WAN = IndeterminateReservation

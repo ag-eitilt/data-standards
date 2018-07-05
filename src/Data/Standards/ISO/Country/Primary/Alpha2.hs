@@ -46,6 +46,8 @@ import qualified Data.Hashable as H
 {-# DEPRECATED WV "Use official code VC" #-}
 {-# DEPRECATED YV "Use official code VE" #-}
 
+{-# WARNING AP,BX,EF,EM,EP,EV,GC,IB,OA,WO "Not an official ISO 3166-1 code" #-}
+
 -- | The official, recommended codes for countries, translated into a type-safe
 -- representation.  Unless otherwise specified, all codes are 'Official'.
 data Alpha2
@@ -59,6 +61,7 @@ data Alpha2
     | AM  -- ^ Armenia
     | AN  -- ^ 'TransitionalReservation': Netherlands Antilles
     | AO  -- ^ Angola
+    | AP  -- ^ 'NotInUse': African Regional Industrial Property Organization
     | AQ  -- ^ Antarctica
     | AR  -- ^ Argentina
     | AS  -- ^ American Samoa
@@ -88,6 +91,7 @@ data Alpha2
     | BU  -- ^ 'TransitionalReservation': Burma
     | BV  -- ^ Bouvet Island
     | BW  -- ^ Botswana
+    | BX  -- ^ 'NotInUse': Benelux Trademarks and Design Offices
     | BY  -- ^ Belarus
     | BZ  -- ^ Belize
 
@@ -125,6 +129,10 @@ data Alpha2
     | EA  -- ^ 'ExceptionalReservation': Ceuta & Melilla
     | EC  -- ^ Ecuador
     | EE  -- ^ Estonia
+    | EF  -- ^ 'NotInUse': European Community Patent Convention
+    | EM  -- ^ 'NotInUse': European Trademark Office
+    | EP  -- ^ 'NotInUse': European Patent Organization
+    | EV  -- ^ 'NotInUse': Eurasian Patent Organization
     | EW  -- ^ 'IndeterminateReservation': Estonia (road vehicles)
     | EG  -- ^ Egypt
     | EH  -- ^ Western Sahara
@@ -145,6 +153,7 @@ data Alpha2
 
     | GA  -- ^ Gabon
     | GB  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
+    | GC  -- ^ 'NotInUse': Patent Office of the Cooperation Council for the Arab States of the Gulf
     | GD  -- ^ Grenada
     | GE  -- ^ Georgia
     | GF  -- ^ French Guiana
@@ -170,6 +179,7 @@ data Alpha2
     | HT  -- ^ Haiti
     | HU  -- ^ Hungary
 
+    | IB  -- ^ 'NotInUse': World Intellectual Property Organization, International Bureau
     | IC  -- ^ 'ExceptionalReservation': Canary Islands (the)
     | ID  -- ^ Indonesia
     | IE  -- ^ Ireland
@@ -251,6 +261,7 @@ data Alpha2
     | NU  -- ^ Niue
     | NZ  -- ^ New Zealand
 
+    | OA  -- ^ 'NotInUse': African Intellectual Property Organization
     | OM  -- ^ Oman
 
     | PA  -- ^ Panama
@@ -348,6 +359,7 @@ data Alpha2
     | WF  -- ^ Wallis and Futuna
     | WG  -- ^ 'IndeterminateReservation': Grenada (road vehicles)
     | WL  -- ^ 'IndeterminateReservation': Saint Lucia (road vehicles)
+    | WO  -- ^ 'NotInUse': World Intellectual Property Organization
     | WS  -- ^ Samoa
     | WV  -- ^ 'IndeterminateReservation': Saint Vincent (road vehicles)
 
@@ -369,21 +381,30 @@ instance H.Hashable Alpha2 where
 codeStatus :: Alpha2 -> Status
 codeStatus AC = ExceptionalReservation
 codeStatus AN = TransitionalReservation
+codeStatus AP = NotInUse
 codeStatus BU = TransitionalReservation
+codeStatus BX = NotInUse
 codeStatus CP = ExceptionalReservation
 codeStatus CS = TransitionalReservation
 codeStatus DG = ExceptionalReservation
 codeStatus DY = IndeterminateReservation
 codeStatus EA = ExceptionalReservation
-codeStatus EW = IndeterminateReservation
+codeStatus EF = NotInUse
+codeStatus EM = NotInUse
+codeStatus EP = NotInUse
 codeStatus EU = ExceptionalReservation
+codeStatus EV = NotInUse
+codeStatus EW = IndeterminateReservation
 codeStatus EZ = ExceptionalReservation
 codeStatus FL = IndeterminateReservation
 codeStatus FX = ExceptionalReservation
+codeStatus GC = NotInUse
+codeStatus IB = NotInUse
 codeStatus IC = ExceptionalReservation
 codeStatus JA = IndeterminateReservation
 codeStatus LF = IndeterminateReservation
 codeStatus NT = TransitionalReservation
+codeStatus OA = NotInUse
 codeStatus PI = IndeterminateReservation
 codeStatus RA = IndeterminateReservation
 codeStatus RB = IndeterminateReservation
@@ -401,6 +422,7 @@ codeStatus UK = ExceptionalReservation
 codeStatus UN = ExceptionalReservation
 codeStatus WG = IndeterminateReservation
 codeStatus WL = IndeterminateReservation
+codeStatus WO = NotInUse
 codeStatus WV = IndeterminateReservation
 codeStatus YU = TransitionalReservation
 codeStatus YV = IndeterminateReservation

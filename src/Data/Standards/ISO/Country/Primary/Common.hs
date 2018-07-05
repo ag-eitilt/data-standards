@@ -22,8 +22,9 @@ data Status
     -- | Use of the code is restricted to historic vehicle registrations, but
     -- may still be reassigned at any point.
     | IndeterminateReservation
-    -- | The code is used to refer to an international intellectual property
-    -- organization by the WIPO, and will not be assigned in ISO 3166.
+    -- | The code is used by another standard or high-profile organization, and
+    -- will not be assigned in ISO 3166.  Officially, these are listed as an
+    -- 'IndeterminateReservation'.
     | NotInUse
     -- | The code was previously included in the standard, but the country it
     -- referred to has been reassigned or no longer exists, and so (unless it's
