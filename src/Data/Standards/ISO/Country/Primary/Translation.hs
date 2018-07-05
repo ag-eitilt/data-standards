@@ -20,6 +20,7 @@ import qualified Data.Standards.ISO.Country.Primary.Alpha3 as A3
 import qualified Data.Standards.ISO.Country.Primary.Numeric as N
 
 import qualified Data.HashMap.Lazy as M
+import qualified Data.Maybe as Y
 
 -- | Convert an 'Alpha2' country code to an 'Alpha3'.
 alpha2ToAlpha3 :: A2.Alpha2 -> Maybe A3.Alpha3
@@ -47,315 +48,339 @@ numericToAlpha3 = flip M.lookup na3
 
 -- | The mappings between countries which have a unique code in all systems of
 -- representation.
-tuples :: [(A2.Alpha2, A3.Alpha3, N.Numeric)]
+tuples :: [(Maybe A2.Alpha2, Maybe A3.Alpha3, Maybe N.Numeric)]
 tuples =
-    [ (A2.AD, A3.AND, N.C020)  -- Andorra
-    , (A2.AE, A3.ARE, N.C784)  -- United Arab Emirates (the)
-    , (A2.AF, A3.AFG, N.C004)  -- Afghanistan
-    , (A2.AG, A3.ATG, N.C028)  -- Antigua and Barbuda
-    , (A2.AI, A3.AIA, N.C660)  -- Anguilla
-    , (A2.AL, A3.ALB, N.C008)  -- Albania
-    , (A2.AM, A3.ARM, N.C051)  -- Armenia
-    , (A2.AO, A3.AGO, N.C024)  -- Angola
-    , (A2.AQ, A3.ATA, N.C010)  -- Antarctica
-    , (A2.AR, A3.ARG, N.C032)  -- Argentina
-    , (A2.AS, A3.ASM, N.C016)  -- American Samoa
-    , (A2.AT, A3.AUT, N.C040)  -- Austria
-    , (A2.AU, A3.AUS, N.C036)  -- Australia
-    , (A2.AW, A3.ABW, N.C533)  -- Aruba
-    , (A2.AX, A3.ALA, N.C248)  -- Åland Islands
-    , (A2.AZ, A3.AZE, N.C031)  -- Azerbaijan
+    [ (Just A2.AC, Just A3.ASC, Nothing    )  -- Ascension Island
+    , (Just A2.AD, Just A3.AND, Just N.C020)  -- Andorra
+    , (Just A2.AE, Just A3.ARE, Just N.C784)  -- United Arab Emirates (the)
+    , (Just A2.AF, Just A3.AFG, Just N.C004)  -- Afghanistan
+    , (Just A2.AG, Just A3.ATG, Just N.C028)  -- Antigua and Barbuda
+    , (Just A2.AI, Just A3.AIA, Just N.C660)  -- Anguilla
+    , (Just A2.AL, Just A3.ALB, Just N.C008)  -- Albania
+    , (Just A2.AM, Just A3.ARM, Just N.C051)  -- Armenia
+    , (Just A2.AO, Just A3.AGO, Just N.C024)  -- Angola
+    , (Just A2.AQ, Just A3.ATA, Just N.C010)  -- Antarctica
+    , (Just A2.AR, Just A3.ARG, Just N.C032)  -- Argentina
+    , (Just A2.AS, Just A3.ASM, Just N.C016)  -- American Samoa
+    , (Just A2.AT, Just A3.AUT, Just N.C040)  -- Austria
+    , (Just A2.AU, Just A3.AUS, Just N.C036)  -- Australia
+    , (Just A2.AW, Just A3.ABW, Just N.C533)  -- Aruba
+    , (Just A2.AX, Just A3.ALA, Just N.C248)  -- Åland Islands
+    , (Just A2.AZ, Just A3.AZE, Just N.C031)  -- Azerbaijan
 
-    , (A2.BA, A3.BIH, N.C070)  -- Bosnia and Herzegovina
-    , (A2.BB, A3.BRB, N.C052)  -- Barbados
-    , (A2.BD, A3.BGD, N.C050)  -- Bangladesh
-    , (A2.BE, A3.BEL, N.C056)  -- Belgium
-    , (A2.BF, A3.BFA, N.C854)  -- Burkina Faso
-    , (A2.BG, A3.BGR, N.C100)  -- Bulgaria
-    , (A2.BH, A3.BHR, N.C048)  -- Bahrain
-    , (A2.BI, A3.BDI, N.C108)  -- Burundi
-    , (A2.BJ, A3.BEN, N.C204)  -- Benin
-    , (A2.BL, A3.BLM, N.C652)  -- Saint Barthélemy
-    , (A2.BM, A3.BMU, N.C060)  -- Bermuda
-    , (A2.BN, A3.BRN, N.C096)  -- Brunei Darussalam
-    , (A2.BO, A3.BOL, N.C068)  -- Bolivia (Plurinational State of)
-    , (A2.BQ, A3.BES, N.C535)  -- Bonaire, Sint Eustatius and Saba
-    , (A2.BR, A3.BRA, N.C076)  -- Brazil
-    , (A2.BS, A3.BHS, N.C044)  -- Bahamas (the)
-    , (A2.BT, A3.BTN, N.C064)  -- Bhutan
-    , (A2.BV, A3.BVT, N.C074)  -- Bouvet Island
-    , (A2.BW, A3.BWA, N.C072)  -- Botswana
-    , (A2.BY, A3.BLR, N.C112)  -- Belarus
-    , (A2.BZ, A3.BLZ, N.C084)  -- Belize
+    , (Just A2.BA, Just A3.BIH, Just N.C070)  -- Bosnia and Herzegovina
+    , (Just A2.BB, Just A3.BRB, Just N.C052)  -- Barbados
+    , (Just A2.BD, Just A3.BGD, Just N.C050)  -- Bangladesh
+    , (Just A2.BE, Just A3.BEL, Just N.C056)  -- Belgium
+    , (Just A2.BF, Just A3.BFA, Just N.C854)  -- Burkina Faso
+    , (Just A2.BG, Just A3.BGR, Just N.C100)  -- Bulgaria
+    , (Just A2.BH, Just A3.BHR, Just N.C048)  -- Bahrain
+    , (Just A2.BI, Just A3.BDI, Just N.C108)  -- Burundi
+    , (Just A2.BJ, Just A3.BEN, Just N.C204)  -- Benin
+    , (Just A2.BL, Just A3.BLM, Just N.C652)  -- Saint Barthélemy
+    , (Just A2.BM, Just A3.BMU, Just N.C060)  -- Bermuda
+    , (Just A2.BN, Just A3.BRN, Just N.C096)  -- Brunei Darussalam
+    , (Just A2.BO, Just A3.BOL, Just N.C068)  -- Bolivia (Plurinational State of)
+    , (Just A2.BQ, Just A3.BES, Just N.C535)  -- Bonaire, Sint Eustatius and Saba
+    , (Just A2.BR, Just A3.BRA, Just N.C076)  -- Brazil
+    , (Just A2.BS, Just A3.BHS, Just N.C044)  -- Bahamas (the)
+    , (Just A2.BT, Just A3.BTN, Just N.C064)  -- Bhutan
+    , (Just A2.BV, Just A3.BVT, Just N.C074)  -- Bouvet Island
+    , (Just A2.BW, Just A3.BWA, Just N.C072)  -- Botswana
+    , (Just A2.BY, Just A3.BLR, Just N.C112)  -- Belarus
+    , (Just A2.BZ, Just A3.BLZ, Just N.C084)  -- Belize
 
-    , (A2.CA, A3.CAN, N.C124)  -- Canada
-    , (A2.CC, A3.CCK, N.C166)  -- Cocos (Keeling) Islands (the)
-    , (A2.CD, A3.COD, N.C180)  -- Congo (the Democratic Republic of the)
-    , (A2.CF, A3.CAF, N.C140)  -- Central African Republic (the)
-    , (A2.CG, A3.COG, N.C178)  -- Congo (the)
-    , (A2.CH, A3.CHE, N.C756)  -- Switzerland
-    , (A2.CI, A3.CIV, N.C384)  -- Côte d'Ivoire
-    , (A2.CK, A3.COK, N.C184)  -- Cook Islands (the)
-    , (A2.CL, A3.CHL, N.C152)  -- Chile
-    , (A2.CM, A3.CMR, N.C120)  -- Cameroon
-    , (A2.CN, A3.CHN, N.C156)  -- China
-    , (A2.CO, A3.COL, N.C170)  -- Colombia
-    , (A2.CR, A3.CRI, N.C188)  -- Costa Rica
-    , (A2.CU, A3.CUB, N.C192)  -- Cuba
-    , (A2.CV, A3.CPV, N.C132)  -- Cabo Verde
-    , (A2.CW, A3.CUW, N.C531)  -- Curaçao
-    , (A2.CX, A3.CXR, N.C162)  -- Christmas Island
-    , (A2.CY, A3.CYP, N.C196)  -- Cyprus
-    , (A2.CZ, A3.CZE, N.C203)  -- Czechia
+    , (Just A2.CA, Just A3.CAN, Just N.C124)  -- Canada
+    , (Just A2.CC, Just A3.CCK, Just N.C166)  -- Cocos (Keeling) Islands (the)
+    , (Just A2.CD, Just A3.COD, Just N.C180)  -- Congo (the Democratic Republic of the)
+    , (Just A2.CF, Just A3.CAF, Just N.C140)  -- Central African Republic (the)
+    , (Just A2.CG, Just A3.COG, Just N.C178)  -- Congo (the)
+    , (Just A2.CH, Just A3.CHE, Just N.C756)  -- Switzerland
+    , (Just A2.CI, Just A3.CIV, Just N.C384)  -- Côte d'Ivoire
+    , (Just A2.CK, Just A3.COK, Just N.C184)  -- Cook Islands (the)
+    , (Just A2.CL, Just A3.CHL, Just N.C152)  -- Chile
+    , (Just A2.CM, Just A3.CMR, Just N.C120)  -- Cameroon
+    , (Just A2.CN, Just A3.CHN, Just N.C156)  -- China
+    , (Just A2.CO, Just A3.COL, Just N.C170)  -- Colombia
+    , (Just A2.CP, Just A3.CPT, Nothing    )  -- Clipperton Island
+    , (Just A2.CR, Just A3.CRI, Just N.C188)  -- Costa Rica
+    , (Just A2.CU, Just A3.CUB, Just N.C192)  -- Cuba
+    , (Just A2.CV, Just A3.CPV, Just N.C132)  -- Cabo Verde
+    , (Just A2.CW, Just A3.CUW, Just N.C531)  -- Curaçao
+    , (Just A2.CX, Just A3.CXR, Just N.C162)  -- Christmas Island
+    , (Just A2.CY, Just A3.CYP, Just N.C196)  -- Cyprus
+    , (Just A2.CZ, Just A3.CZE, Just N.C203)  -- Czechia
 
-    , (A2.DE, A3.DEU, N.C276)  -- Germany
-    , (A2.DJ, A3.DJI, N.C262)  -- Djibouti
-    , (A2.DK, A3.DNK, N.C208)  -- Denmark
-    , (A2.DM, A3.DMA, N.C212)  -- Dominica
-    , (A2.DO, A3.DOM, N.C214)  -- Dominican Republic (the)
-    , (A2.DZ, A3.DZA, N.C012)  -- Algeria
+    , (Just A2.DE, Just A3.DEU, Just N.C276)  -- Germany
+    , (Just A2.DG, Just A3.DGA, Nothing    )  -- Diego Garcia
+    , (Just A2.DJ, Just A3.DJI, Just N.C262)  -- Djibouti
+    , (Just A2.DK, Just A3.DNK, Just N.C208)  -- Denmark
+    , (Just A2.DM, Just A3.DMA, Just N.C212)  -- Dominica
+    , (Just A2.DO, Just A3.DOM, Just N.C214)  -- Dominican Republic (the)
+    , (Just A2.DZ, Just A3.DZA, Just N.C012)  -- Algeria
 
-    , (A2.EC, A3.ECU, N.C218)  -- Ecuador
-    , (A2.EE, A3.EST, N.C233)  -- Estonia
-    , (A2.EG, A3.EGY, N.C818)  -- Egypt
-    , (A2.EH, A3.ESH, N.C732)  -- Western Sahara
-    , (A2.ER, A3.ERI, N.C232)  -- Eritrea
-    , (A2.ES, A3.ESP, N.C724)  -- Spain
-    , (A2.ET, A3.ETH, N.C231)  -- Ethiopia
+    , (Just A2.EA, Nothing    , Nothing    )  -- Ceuta & Melilla
+    , (Just A2.EC, Just A3.ECU, Just N.C218)  -- Ecuador
+    , (Just A2.EE, Just A3.EST, Just N.C233)  -- Estonia
+    , (Just A2.EG, Just A3.EGY, Just N.C818)  -- Egypt
+    , (Just A2.EH, Just A3.ESH, Just N.C732)  -- Western Sahara
+    , (Just A2.ER, Just A3.ERI, Just N.C232)  -- Eritrea
+    , (Just A2.ES, Just A3.ESP, Just N.C724)  -- Spain
+    , (Just A2.ET, Just A3.ETH, Just N.C231)  -- Ethiopia
+    , (Just A2.EU, Nothing    , Nothing    )  -- European Union
+    , (Just A2.EZ, Nothing    , Nothing    )  -- Eurozone
 
-    , (A2.FI, A3.FIN, N.C246)  -- Finland
-    , (A2.FJ, A3.FJI, N.C242)  -- Fiji
-    , (A2.FK, A3.FLK, N.C238)  -- Falkland Islands (the) [Malvinas]
-    , (A2.FM, A3.FSM, N.C583)  -- Micronesia (Federated States of)
-    , (A2.FO, A3.FRO, N.C234)  -- Faroe Islands (the)
-    , (A2.FR, A3.FRA, N.C250)  -- France
-    , (A2.FX, A3.FXX, N.C249)  -- France, Metropolitan
+    , (Just A2.FI, Just A3.FIN, Just N.C246)  -- Finland
+    , (Just A2.FJ, Just A3.FJI, Just N.C242)  -- Fiji
+    , (Just A2.FK, Just A3.FLK, Just N.C238)  -- Falkland Islands (the) [Malvinas]
+    , (Just A2.FM, Just A3.FSM, Just N.C583)  -- Micronesia (Federated States of)
+    , (Just A2.FO, Just A3.FRO, Just N.C234)  -- Faroe Islands (the)
+    , (Just A2.FR, Just A3.FRA, Just N.C250)  -- France
+    , (Just A2.FX, Just A3.FXX, Just N.C249)  -- France, Metropolitan
 
-    , (A2.GA, A3.GAB, N.C266)  -- Gabon
-    , (A2.GB, A3.GBR, N.C826)  -- United Kingdom of Great Britain and Northern Ireland (the)
-    , (A2.GD, A3.GRD, N.C308)  -- Grenada
-    , (A2.GE, A3.GEO, N.C268)  -- Georgia
-    , (A2.GF, A3.GUF, N.C254)  -- French Guiana
-    , (A2.GG, A3.GGY, N.C831)  -- Guernsey
-    , (A2.GH, A3.GHA, N.C288)  -- Ghana
-    , (A2.GI, A3.GIB, N.C292)  -- Gibraltar
-    , (A2.GL, A3.GRL, N.C304)  -- Greenland
-    , (A2.GM, A3.GMB, N.C270)  -- Gambia (the)
-    , (A2.GN, A3.GIN, N.C324)  -- Guinea
-    , (A2.GP, A3.GLP, N.C312)  -- Guadeloupe
-    , (A2.GQ, A3.GNQ, N.C226)  -- Equatorial Guinea
-    , (A2.GR, A3.GRC, N.C300)  -- Greece
-    , (A2.GS, A3.SGS, N.C239)  -- South Georgia and the South Sandwich Islands
-    , (A2.GT, A3.GTM, N.C320)  -- Guatemala
-    , (A2.GU, A3.GUM, N.C316)  -- Guam
-    , (A2.GW, A3.GNB, N.C624)  -- Guinea-Bissau
-    , (A2.GY, A3.GUY, N.C328)  -- Guyana
+    , (Just A2.GA, Just A3.GAB, Just N.C266)  -- Gabon
+    , (Just A2.GB, Just A3.GBR, Just N.C826)  -- United Kingdom of Great Britain and Northern Ireland (the)
+    , (Just A2.GD, Just A3.GRD, Just N.C308)  -- Grenada
+    , (Just A2.GE, Just A3.GEO, Just N.C268)  -- Georgia
+    , (Just A2.GF, Just A3.GUF, Just N.C254)  -- French Guiana
+    , (Just A2.GG, Just A3.GGY, Just N.C831)  -- Guernsey
+    , (Just A2.GH, Just A3.GHA, Just N.C288)  -- Ghana
+    , (Just A2.GI, Just A3.GIB, Just N.C292)  -- Gibraltar
+    , (Just A2.GL, Just A3.GRL, Just N.C304)  -- Greenland
+    , (Just A2.GM, Just A3.GMB, Just N.C270)  -- Gambia (the)
+    , (Just A2.GN, Just A3.GIN, Just N.C324)  -- Guinea
+    , (Just A2.GP, Just A3.GLP, Just N.C312)  -- Guadeloupe
+    , (Just A2.GQ, Just A3.GNQ, Just N.C226)  -- Equatorial Guinea
+    , (Just A2.GR, Just A3.GRC, Just N.C300)  -- Greece
+    , (Just A2.GS, Just A3.SGS, Just N.C239)  -- South Georgia and the South Sandwich Islands
+    , (Just A2.GT, Just A3.GTM, Just N.C320)  -- Guatemala
+    , (Just A2.GU, Just A3.GUM, Just N.C316)  -- Guam
+    , (Just A2.GW, Just A3.GNB, Just N.C624)  -- Guinea-Bissau
+    , (Just A2.GY, Just A3.GUY, Just N.C328)  -- Guyana
 
-    , (A2.HK, A3.HKG, N.C344)  -- Hong Kong
-    , (A2.HM, A3.HMD, N.C334)  -- Heard Island and McDonald Islands
-    , (A2.HN, A3.HND, N.C340)  -- Honduras
-    , (A2.HR, A3.HRV, N.C191)  -- Croatia
-    , (A2.HT, A3.HTI, N.C332)  -- Haiti
-    , (A2.HU, A3.HUN, N.C348)  -- Hungary
+    , (Just A2.HK, Just A3.HKG, Just N.C344)  -- Hong Kong
+    , (Just A2.HM, Just A3.HMD, Just N.C334)  -- Heard Island and McDonald Islands
+    , (Just A2.HN, Just A3.HND, Just N.C340)  -- Honduras
+    , (Just A2.HR, Just A3.HRV, Just N.C191)  -- Croatia
+    , (Just A2.HT, Just A3.HTI, Just N.C332)  -- Haiti
+    , (Just A2.HU, Just A3.HUN, Just N.C348)  -- Hungary
 
-    , (A2.ID, A3.IDN, N.C360)  -- Indonesia
-    , (A2.IE, A3.IRL, N.C372)  -- Ireland
-    , (A2.IL, A3.ISR, N.C376)  -- Israel
-    , (A2.IM, A3.IMN, N.C833)  -- Isle of Man
-    , (A2.IN, A3.IND, N.C356)  -- India
-    , (A2.IO, A3.IOT, N.C086)  -- British Indian Ocean Territory (the)
-    , (A2.IQ, A3.IRQ, N.C368)  -- Iraq
-    , (A2.IR, A3.IRN, N.C364)  -- Iran (Islamic Republic of)
-    , (A2.IS, A3.ISL, N.C352)  -- Iceland
-    , (A2.IT, A3.ITA, N.C380)  -- Italy
+    , (Just A2.IC, Nothing    , Nothing    )  -- Canary Islands
+    , (Just A2.ID, Just A3.IDN, Just N.C360)  -- Indonesia
+    , (Just A2.IE, Just A3.IRL, Just N.C372)  -- Ireland
+    , (Just A2.IL, Just A3.ISR, Just N.C376)  -- Israel
+    , (Just A2.IM, Just A3.IMN, Just N.C833)  -- Isle of Man
+    , (Just A2.IN, Just A3.IND, Just N.C356)  -- India
+    , (Just A2.IO, Just A3.IOT, Just N.C086)  -- British Indian Ocean Territory (the)
+    , (Just A2.IQ, Just A3.IRQ, Just N.C368)  -- Iraq
+    , (Just A2.IR, Just A3.IRN, Just N.C364)  -- Iran (Islamic Republic of)
+    , (Just A2.IS, Just A3.ISL, Just N.C352)  -- Iceland
+    , (Just A2.IT, Just A3.ITA, Just N.C380)  -- Italy
 
-    , (A2.JE, A3.JEY, N.C832)  -- Jersey
-    , (A2.JM, A3.JAM, N.C388)  -- Jamaica
-    , (A2.JO, A3.JOR, N.C400)  -- Jordan
-    , (A2.JP, A3.JPN, N.C392)  -- Japan
+    , (Just A2.JE, Just A3.JEY, Just N.C832)  -- Jersey
+    , (Just A2.JM, Just A3.JAM, Just N.C388)  -- Jamaica
+    , (Just A2.JO, Just A3.JOR, Just N.C400)  -- Jordan
+    , (Just A2.JP, Just A3.JPN, Just N.C392)  -- Japan
 
-    , (A2.KE, A3.KEN, N.C404)  -- Kenya
-    , (A2.KG, A3.KGZ, N.C417)  -- Kyrgyzstan
-    , (A2.KH, A3.KHM, N.C116)  -- Cambodia
-    , (A2.KI, A3.KIR, N.C296)  -- Kiribati
-    , (A2.KM, A3.COM, N.C174)  -- Comoros (the)
-    , (A2.KN, A3.KNA, N.C659)  -- Saint Kitts and Nevis
-    , (A2.KP, A3.PRK, N.C408)  -- Korea (the Democratic People's Republic of)
-    , (A2.KR, A3.KOR, N.C410)  -- Korea (the Republic of)
-    , (A2.KW, A3.KWT, N.C414)  -- Kuwait
-    , (A2.KY, A3.CYM, N.C136)  -- Cayman Islands (the)
-    , (A2.KZ, A3.KAZ, N.C398)  -- Kazakhstan
+    , (Just A2.KE, Just A3.KEN, Just N.C404)  -- Kenya
+    , (Just A2.KG, Just A3.KGZ, Just N.C417)  -- Kyrgyzstan
+    , (Just A2.KH, Just A3.KHM, Just N.C116)  -- Cambodia
+    , (Just A2.KI, Just A3.KIR, Just N.C296)  -- Kiribati
+    , (Just A2.KM, Just A3.COM, Just N.C174)  -- Comoros (the)
+    , (Just A2.KN, Just A3.KNA, Just N.C659)  -- Saint Kitts and Nevis
+    , (Just A2.KP, Just A3.PRK, Just N.C408)  -- Korea (the Democratic People's Republic of)
+    , (Just A2.KR, Just A3.KOR, Just N.C410)  -- Korea (the Republic of)
+    , (Just A2.KW, Just A3.KWT, Just N.C414)  -- Kuwait
+    , (Just A2.KY, Just A3.CYM, Just N.C136)  -- Cayman Islands (the)
+    , (Just A2.KZ, Just A3.KAZ, Just N.C398)  -- Kazakhstan
 
-    , (A2.LA, A3.LAO, N.C418)  -- Lao People's Democratic Republic (the)
-    , (A2.LB, A3.LBN, N.C422)  -- Lebanon
-    , (A2.LC, A3.LCA, N.C662)  -- Saint Lucia
-    , (A2.LI, A3.LIE, N.C438)  -- Liechtenstein
-    , (A2.LK, A3.LKA, N.C144)  -- Sri Lanka
-    , (A2.LR, A3.LBR, N.C430)  -- Liberia
-    , (A2.LS, A3.LSO, N.C426)  -- Lesotho
-    , (A2.LT, A3.LTU, N.C440)  -- Lithuania
-    , (A2.LU, A3.LUX, N.C442)  -- Luxembourg
-    , (A2.LV, A3.LVA, N.C428)  -- Latvia
-    , (A2.LY, A3.LBY, N.C434)  -- Libya
+    , (Just A2.LA, Just A3.LAO, Just N.C418)  -- Lao People's Democratic Republic (the)
+    , (Just A2.LB, Just A3.LBN, Just N.C422)  -- Lebanon
+    , (Just A2.LC, Just A3.LCA, Just N.C662)  -- Saint Lucia
+    , (Just A2.LI, Just A3.LIE, Just N.C438)  -- Liechtenstein
+    , (Just A2.LK, Just A3.LKA, Just N.C144)  -- Sri Lanka
+    , (Just A2.LR, Just A3.LBR, Just N.C430)  -- Liberia
+    , (Just A2.LS, Just A3.LSO, Just N.C426)  -- Lesotho
+    , (Just A2.LT, Just A3.LTU, Just N.C440)  -- Lithuania
+    , (Just A2.LU, Just A3.LUX, Just N.C442)  -- Luxembourg
+    , (Just A2.LV, Just A3.LVA, Just N.C428)  -- Latvia
+    , (Just A2.LY, Just A3.LBY, Just N.C434)  -- Libya
 
-    , (A2.MA, A3.MAR, N.C504)  -- Morocco
-    , (A2.MC, A3.MCO, N.C492)  -- Monaco
-    , (A2.MD, A3.MDA, N.C498)  -- Moldova (the Republic of)
-    , (A2.ME, A3.MNE, N.C499)  -- Montenegro
-    , (A2.MF, A3.MAF, N.C663)  -- Saint Martin (French part)
-    , (A2.MG, A3.MDG, N.C450)  -- Madagascar
-    , (A2.MH, A3.MHL, N.C584)  -- Marshall Islands (the)
-    , (A2.MK, A3.MKD, N.C807)  -- Macedonia (the former Yugoslav Republic of)
-    , (A2.ML, A3.MLI, N.C466)  -- Mali
-    , (A2.MM, A3.MMR, N.C104)  -- Myanmar
-    , (A2.MN, A3.MNG, N.C496)  -- Mongolia
-    , (A2.MO, A3.MAC, N.C446)  -- Macao
-    , (A2.MP, A3.MNP, N.C580)  -- Northern Mariana Islands (the)
-    , (A2.MQ, A3.MTQ, N.C474)  -- Martinique
-    , (A2.MR, A3.MRT, N.C478)  -- Mauritania
-    , (A2.MS, A3.MSR, N.C500)  -- Montserrat
-    , (A2.MT, A3.MLT, N.C470)  -- Malta
-    , (A2.MU, A3.MUS, N.C480)  -- Mauritius
-    , (A2.MV, A3.MDV, N.C462)  -- Maldives
-    , (A2.MW, A3.MWI, N.C454)  -- Malawi
-    , (A2.MX, A3.MEX, N.C484)  -- Mexico
-    , (A2.MY, A3.MYS, N.C458)  -- Malaysia
-    , (A2.MZ, A3.MOZ, N.C508)  -- Mozambique
+    , (Just A2.MA, Just A3.MAR, Just N.C504)  -- Morocco
+    , (Just A2.MC, Just A3.MCO, Just N.C492)  -- Monaco
+    , (Just A2.MD, Just A3.MDA, Just N.C498)  -- Moldova (the Republic of)
+    , (Just A2.ME, Just A3.MNE, Just N.C499)  -- Montenegro
+    , (Just A2.MF, Just A3.MAF, Just N.C663)  -- Saint Martin (French part)
+    , (Just A2.MG, Just A3.MDG, Just N.C450)  -- Madagascar
+    , (Just A2.MH, Just A3.MHL, Just N.C584)  -- Marshall Islands (the)
+    , (Just A2.MK, Just A3.MKD, Just N.C807)  -- Macedonia (the former Yugoslav Republic of)
+    , (Just A2.ML, Just A3.MLI, Just N.C466)  -- Mali
+    , (Just A2.MM, Just A3.MMR, Just N.C104)  -- Myanmar
+    , (Just A2.MN, Just A3.MNG, Just N.C496)  -- Mongolia
+    , (Just A2.MO, Just A3.MAC, Just N.C446)  -- Macao
+    , (Just A2.MP, Just A3.MNP, Just N.C580)  -- Northern Mariana Islands (the)
+    , (Just A2.MQ, Just A3.MTQ, Just N.C474)  -- Martinique
+    , (Just A2.MR, Just A3.MRT, Just N.C478)  -- Mauritania
+    , (Just A2.MS, Just A3.MSR, Just N.C500)  -- Montserrat
+    , (Just A2.MT, Just A3.MLT, Just N.C470)  -- Malta
+    , (Just A2.MU, Just A3.MUS, Just N.C480)  -- Mauritius
+    , (Just A2.MV, Just A3.MDV, Just N.C462)  -- Maldives
+    , (Just A2.MW, Just A3.MWI, Just N.C454)  -- Malawi
+    , (Just A2.MX, Just A3.MEX, Just N.C484)  -- Mexico
+    , (Just A2.MY, Just A3.MYS, Just N.C458)  -- Malaysia
+    , (Just A2.MZ, Just A3.MOZ, Just N.C508)  -- Mozambique
 
-    , (A2.NA, A3.NAM, N.C516)  -- Namibia
-    , (A2.NC, A3.NCL, N.C540)  -- New Caledonia
-    , (A2.NE, A3.NER, N.C562)  -- Niger (the)
-    , (A2.NF, A3.NFK, N.C574)  -- Norfolk Island
-    , (A2.NG, A3.NGA, N.C566)  -- Nigeria
-    , (A2.NI, A3.NIC, N.C558)  -- Nicaragua
-    , (A2.NL, A3.NLD, N.C528)  -- Netherlands (the)
-    , (A2.NO, A3.NOR, N.C578)  -- Norway
-    , (A2.NP, A3.NPL, N.C524)  -- Nepal
-    , (A2.NR, A3.NRU, N.C520)  -- Nauru
-    , (A2.NU, A3.NIU, N.C570)  -- Niue
-    , (A2.NZ, A3.NZL, N.C554)  -- New Zealand
+    , (Just A2.NA, Just A3.NAM, Just N.C516)  -- Namibia
+    , (Just A2.NC, Just A3.NCL, Just N.C540)  -- New Caledonia
+    , (Just A2.NE, Just A3.NER, Just N.C562)  -- Niger (the)
+    , (Just A2.NF, Just A3.NFK, Just N.C574)  -- Norfolk Island
+    , (Just A2.NG, Just A3.NGA, Just N.C566)  -- Nigeria
+    , (Just A2.NI, Just A3.NIC, Just N.C558)  -- Nicaragua
+    , (Just A2.NL, Just A3.NLD, Just N.C528)  -- Netherlands (the)
+    , (Just A2.NO, Just A3.NOR, Just N.C578)  -- Norway
+    , (Just A2.NP, Just A3.NPL, Just N.C524)  -- Nepal
+    , (Just A2.NR, Just A3.NRU, Just N.C520)  -- Nauru
+    , (Just A2.NU, Just A3.NIU, Just N.C570)  -- Niue
+    , (Just A2.NZ, Just A3.NZL, Just N.C554)  -- New Zealand
 
-    , (A2.OM, A3.OMN, N.C512)  -- Oman
+    , (Just A2.OM, Just A3.OMN, Just N.C512)  -- Oman
 
-    , (A2.PA, A3.PAN, N.C591)  -- Panama
-    , (A2.PE, A3.PER, N.C604)  -- Peru
-    , (A2.PF, A3.PYF, N.C258)  -- French Polynesia
-    , (A2.PG, A3.PNG, N.C598)  -- Papua New Guinea
-    , (A2.PH, A3.PHL, N.C608)  -- Philippines (the)
-    , (A2.PK, A3.PAK, N.C586)  -- Pakistan
-    , (A2.PL, A3.POL, N.C616)  -- Poland
-    , (A2.PM, A3.SPM, N.C666)  -- Saint Pierre and Miquelon
-    , (A2.PN, A3.PCN, N.C612)  -- Pitcairn
-    , (A2.PR, A3.PRI, N.C630)  -- Puerto Rico
-    , (A2.PS, A3.PSE, N.C275)  -- Palestine, State of
-    , (A2.PT, A3.PRT, N.C620)  -- Portugal
-    , (A2.PW, A3.PLW, N.C585)  -- Palau
-    , (A2.PY, A3.PRY, N.C600)  -- Paraguay
+    , (Just A2.PA, Just A3.PAN, Just N.C591)  -- Panama
+    , (Just A2.PE, Just A3.PER, Just N.C604)  -- Peru
+    , (Just A2.PF, Just A3.PYF, Just N.C258)  -- French Polynesia
+    , (Just A2.PG, Just A3.PNG, Just N.C598)  -- Papua New Guinea
+    , (Just A2.PH, Just A3.PHL, Just N.C608)  -- Philippines (the)
+    , (Just A2.PK, Just A3.PAK, Just N.C586)  -- Pakistan
+    , (Just A2.PL, Just A3.POL, Just N.C616)  -- Poland
+    , (Just A2.PM, Just A3.SPM, Just N.C666)  -- Saint Pierre and Miquelon
+    , (Just A2.PN, Just A3.PCN, Just N.C612)  -- Pitcairn
+    , (Just A2.PR, Just A3.PRI, Just N.C630)  -- Puerto Rico
+    , (Just A2.PS, Just A3.PSE, Just N.C275)  -- Palestine, State of
+    , (Just A2.PT, Just A3.PRT, Just N.C620)  -- Portugal
+    , (Just A2.PW, Just A3.PLW, Just N.C585)  -- Palau
+    , (Just A2.PY, Just A3.PRY, Just N.C600)  -- Paraguay
 
-    , (A2.QA, A3.QAT, N.C634)  -- Qatar
+    , (Just A2.QA, Just A3.QAT, Just N.C634)  -- Qatar
 
-    , (A2.RE, A3.REU, N.C638)  -- Réunion
-    , (A2.RO, A3.ROU, N.C642)  -- Romania
-    , (A2.RS, A3.SRB, N.C688)  -- Serbia
-    , (A2.RU, A3.RUS, N.C643)  -- Russian Federation (the)
-    , (A2.RW, A3.RWA, N.C646)  -- Rwanda
+    , (Just A2.RE, Just A3.REU, Just N.C638)  -- Réunion
+    , (Just A2.RO, Just A3.ROU, Just N.C642)  -- Romania
+    , (Just A2.RS, Just A3.SRB, Just N.C688)  -- Serbia
+    , (Just A2.RU, Just A3.RUS, Just N.C643)  -- Russian Federation (the)
+    , (Just A2.RW, Just A3.RWA, Just N.C646)  -- Rwanda
 
-    , (A2.SA, A3.SAU, N.C682)  -- Saudi Arabia
-    , (A2.SB, A3.SLB, N.C090)  -- Solomon Islands
-    , (A2.SC, A3.SYC, N.C690)  -- Seychelles
-    , (A2.SD, A3.SDN, N.C729)  -- Sudan (the)
-    , (A2.SE, A3.SWE, N.C752)  -- Sweden
-    , (A2.SG, A3.SGP, N.C702)  -- Singapore
-    , (A2.SH, A3.SHN, N.C654)  -- Saint Helena, Ascension and Tristan da Cunha
-    , (A2.SI, A3.SVN, N.C705)  -- Slovenia
-    , (A2.SJ, A3.SJM, N.C744)  -- Svalbard and Jan Mayen
-    , (A2.SK, A3.SVK, N.C703)  -- Slovakia
-    , (A2.SL, A3.SLE, N.C694)  -- Sierra Leone
-    , (A2.SM, A3.SMR, N.C674)  -- San Marino
-    , (A2.SN, A3.SEN, N.C686)  -- Senegal
-    , (A2.SO, A3.SOM, N.C706)  -- Somalia
-    , (A2.SR, A3.SUR, N.C740)  -- Suriname
-    , (A2.SS, A3.SSD, N.C728)  -- South Sudan
-    , (A2.ST, A3.STP, N.C678)  -- Sao Tome and Principe
-    , (A2.SV, A3.SLV, N.C222)  -- El Salvador
-    , (A2.SU, A3.SUN, N.C810)  -- USSR
-    , (A2.SX, A3.SXM, N.C534)  -- Sint Maarten (Dutch part)
-    , (A2.SY, A3.SYR, N.C760)  -- Syrian Arab Republic
-    , (A2.SZ, A3.SWZ, N.C748)  -- Swaziland
+    , (Just A2.SA, Just A3.SAU, Just N.C682)  -- Saudi Arabia
+    , (Just A2.SB, Just A3.SLB, Just N.C090)  -- Solomon Islands
+    , (Just A2.SC, Just A3.SYC, Just N.C690)  -- Seychelles
+    , (Just A2.SD, Just A3.SDN, Just N.C729)  -- Sudan (the)
+    , (Just A2.SE, Just A3.SWE, Just N.C752)  -- Sweden
+    , (Just A2.SG, Just A3.SGP, Just N.C702)  -- Singapore
+    , (Just A2.SH, Just A3.SHN, Just N.C654)  -- Saint Helena, Ascension and Tristan da Cunha
+    , (Just A2.SI, Just A3.SVN, Just N.C705)  -- Slovenia
+    , (Just A2.SJ, Just A3.SJM, Just N.C744)  -- Svalbard and Jan Mayen
+    , (Just A2.SK, Just A3.SVK, Just N.C703)  -- Slovakia
+    , (Just A2.SL, Just A3.SLE, Just N.C694)  -- Sierra Leone
+    , (Just A2.SM, Just A3.SMR, Just N.C674)  -- San Marino
+    , (Just A2.SN, Just A3.SEN, Just N.C686)  -- Senegal
+    , (Just A2.SO, Just A3.SOM, Just N.C706)  -- Somalia
+    , (Just A2.SR, Just A3.SUR, Just N.C740)  -- Suriname
+    , (Just A2.SS, Just A3.SSD, Just N.C728)  -- South Sudan
+    , (Just A2.ST, Just A3.STP, Just N.C678)  -- Sao Tome and Principe
+    , (Just A2.SV, Just A3.SLV, Just N.C222)  -- El Salvador
+    , (Just A2.SU, Just A3.SUN, Just N.C810)  -- USSR
+    , (Just A2.SX, Just A3.SXM, Just N.C534)  -- Sint Maarten (Dutch part)
+    , (Just A2.SY, Just A3.SYR, Just N.C760)  -- Syrian Arab Republic
+    , (Just A2.SZ, Just A3.SWZ, Just N.C748)  -- Swaziland
 
-    , (A2.TC, A3.TCA, N.C796)  -- Turks and Caicos Islands (the)
-    , (A2.TD, A3.TCD, N.C148)  -- Chad
-    , (A2.TF, A3.ATF, N.C260)  -- French Southern Territories (the)
-    , (A2.TG, A3.TGO, N.C768)  -- Togo
-    , (A2.TH, A3.THA, N.C764)  -- Thailand
-    , (A2.TJ, A3.TJK, N.C762)  -- Tajikistan
-    , (A2.TK, A3.TKL, N.C772)  -- Tokelau
-    , (A2.TL, A3.TLS, N.C626)  -- Timor-Leste
-    , (A2.TM, A3.TKM, N.C795)  -- Turkmenistan
-    , (A2.TN, A3.TUN, N.C788)  -- Tunisia
-    , (A2.TO, A3.TON, N.C776)  -- Tonga
-    , (A2.TR, A3.TUR, N.C792)  -- Turkey
-    , (A2.TT, A3.TTO, N.C780)  -- Trinidad and Tobago
-    , (A2.TV, A3.TUV, N.C798)  -- Tuvalu
-    , (A2.TW, A3.TWN, N.C158)  -- Taiwan (Province of China)
-    , (A2.TZ, A3.TZA, N.C834)  -- Tanzania, United Republic of
+    , (Just A2.TA, Just A3.TAA, Nothing    )  -- Tristan da Cunha
+    , (Just A2.TC, Just A3.TCA, Just N.C796)  -- Turks and Caicos Islands (the)
+    , (Just A2.TD, Just A3.TCD, Just N.C148)  -- Chad
+    , (Just A2.TF, Just A3.ATF, Just N.C260)  -- French Southern Territories (the)
+    , (Just A2.TG, Just A3.TGO, Just N.C768)  -- Togo
+    , (Just A2.TH, Just A3.THA, Just N.C764)  -- Thailand
+    , (Just A2.TJ, Just A3.TJK, Just N.C762)  -- Tajikistan
+    , (Just A2.TK, Just A3.TKL, Just N.C772)  -- Tokelau
+    , (Just A2.TL, Just A3.TLS, Just N.C626)  -- Timor-Leste
+    , (Just A2.TM, Just A3.TKM, Just N.C795)  -- Turkmenistan
+    , (Just A2.TN, Just A3.TUN, Just N.C788)  -- Tunisia
+    , (Just A2.TO, Just A3.TON, Just N.C776)  -- Tonga
+    , (Just A2.TR, Just A3.TUR, Just N.C792)  -- Turkey
+    , (Just A2.TT, Just A3.TTO, Just N.C780)  -- Trinidad and Tobago
+    , (Just A2.TV, Just A3.TUV, Just N.C798)  -- Tuvalu
+    , (Just A2.TW, Just A3.TWN, Just N.C158)  -- Taiwan (Province of China)
+    , (Just A2.TZ, Just A3.TZA, Just N.C834)  -- Tanzania, United Republic of
 
-    , (A2.UA, A3.UKR, N.C804)  -- Ukraine
-    , (A2.UG, A3.UGA, N.C800)  -- Uganda
-    , (A2.UM, A3.UMI, N.C581)  -- United States Minor Outlying Islands (the)
-    , (A2.US, A3.USA, N.C840)  -- United States of America (the)
-    , (A2.UY, A3.URY, N.C858)  -- Uruguay
-    , (A2.UZ, A3.UZB, N.C860)  -- Uzbekistan
+    , (Just A2.UA, Just A3.UKR, Just N.C804)  -- Ukraine
+    , (Just A2.UG, Just A3.UGA, Just N.C800)  -- Uganda
+    , (Just A2.UK, Nothing    , Nothing    )  -- United Kingdom
+    , (Just A2.UM, Just A3.UMI, Just N.C581)  -- United States Minor Outlying Islands (the)
+    , (Just A2.UN, Nothing    , Nothing    )  -- United Nations
+    , (Just A2.US, Just A3.USA, Just N.C840)  -- United States of America (the)
+    , (Just A2.UY, Just A3.URY, Just N.C858)  -- Uruguay
+    , (Just A2.UZ, Just A3.UZB, Just N.C860)  -- Uzbekistan
 
-    , (A2.VA, A3.VAT, N.C336)  -- Holy See (the)
-    , (A2.VC, A3.VCT, N.C670)  -- Saint Vincent and the Grenadines
-    , (A2.VE, A3.VEN, N.C862)  -- Venezuela (Bolivarian Republic of)
-    , (A2.VG, A3.VGB, N.C092)  -- Virgin Islands (British)
-    , (A2.VI, A3.VIR, N.C850)  -- Virgin Islands (U.S.)
-    , (A2.VN, A3.VNM, N.C704)  -- Viet Nam
-    , (A2.VU, A3.VUT, N.C548)  -- Vanuatu
+    , (Just A2.VA, Just A3.VAT, Just N.C336)  -- Holy See (the)
+    , (Just A2.VC, Just A3.VCT, Just N.C670)  -- Saint Vincent and the Grenadines
+    , (Just A2.VE, Just A3.VEN, Just N.C862)  -- Venezuela (Bolivarian Republic of)
+    , (Just A2.VG, Just A3.VGB, Just N.C092)  -- Virgin Islands (British)
+    , (Just A2.VI, Just A3.VIR, Just N.C850)  -- Virgin Islands (U.S.)
+    , (Just A2.VN, Just A3.VNM, Just N.C704)  -- Viet Nam
+    , (Just A2.VU, Just A3.VUT, Just N.C548)  -- Vanuatu
 
-    , (A2.WF, A3.WLF, N.C876)  -- Wallis and Futuna
-    , (A2.WS, A3.WSM, N.C882)  -- Samoa
+    , (Just A2.WF, Just A3.WLF, Just N.C876)  -- Wallis and Futuna
+    , (Just A2.WS, Just A3.WSM, Just N.C882)  -- Samoa
 
-    , (A2.YE, A3.YEM, N.C887)  -- Yemen
-    , (A2.YT, A3.MYT, N.C175)  -- Mayotte
+    , (Just A2.YE, Just A3.YEM, Just N.C887)  -- Yemen
+    , (Just A2.YT, Just A3.MYT, Just N.C175)  -- Mayotte
 
-    , (A2.ZA, A3.ZAF, N.C710)  -- South Africa
-    , (A2.ZM, A3.ZMB, N.C894)  -- Zambia
-    , (A2.ZW, A3.ZWE, N.C716)  -- Zimbabwe
-    ]
-
--- | Countries with codes in both the alpha-2 and alpha-3 representations, but
--- not the numeric.
-pairA2A3 :: [(A2.Alpha2, A3.Alpha3)]
-pairA2A3 =
-    [ (A2.AC, A3.ASC)  -- Ascension Island
-    , (A2.CP, A3.CPT)  -- Clipperton Island
-    , (A2.DG, A3.DGA)  -- Diego Garcia
-    , (A2.TA, A3.TAA)  -- Tristan da Cunha
+    , (Just A2.ZA, Just A3.ZAF, Just N.C710)  -- South Africa
+    , (Just A2.ZM, Just A3.ZMB, Just N.C894)  -- Zambia
+    , (Just A2.ZW, Just A3.ZWE, Just N.C716)  -- Zimbabwe
     ]
 
 -- | Cache 'Alpha2' -> 'Alpha3' conversions, and provide faster lookup.
 a2a3 :: M.HashMap A2.Alpha2 A3.Alpha3
-a2a3 = M.fromList $ pairA2A3 ++ map (\(a2, a3, _) -> (a2, a3)) tuples
+a2a3 = M.fromList . flip Y.mapMaybe tuples
+     $ \(ma2, ma3, _) -> do
+         a2 <- ma2
+         a3 <- ma3
+         return (a2, a3)
 
 -- | Cache 'Alpha2' -> 'Numeric' conversions, and provide faster lookup.
 a2n :: M.HashMap A2.Alpha2 N.Numeric
-a2n = M.fromList $ map (\(a2, _, n) -> (a2, n)) tuples
+a2n = M.fromList . flip Y.mapMaybe tuples
+    $ \(ma2, _, mn) -> do
+        a2 <- ma2
+        n <- mn
+        return (a2, n)
 
 -- | Cache 'Alpha3' -> 'Alpha2' conversions, and provide faster lookup.
 a3a2 :: M.HashMap A3.Alpha3 A2.Alpha2
-a3a2 = M.fromList $ map (\(a2, a3, _) -> (a3, a2)) tuples
+a3a2 = M.fromList . flip Y.mapMaybe tuples
+     $ \(ma2, ma3, _) -> do
+         a2 <- ma2
+         a3 <- ma3
+         return (a3, a2)
 
 -- | Cache 'Alpha3' -> 'Numeric' conversions, and provide faster lookup.
 a3n :: M.HashMap A3.Alpha3 N.Numeric
-a3n = M.fromList $ map (\(_, a3, n) -> (a3, n)) tuples
+a3n = M.fromList . flip Y.mapMaybe tuples
+    $ \(_, ma3, mn) -> do
+        a3 <- ma3
+        n <- mn
+        return (a3, n)
 
 -- | Cache 'Numeric' -> 'Alpha2' conversions, and provide faster lookup.
 na2 :: M.HashMap N.Numeric A2.Alpha2
-na2 = M.fromList $ map (\(a2, _, n) -> (n, a2)) tuples
+na2 = M.fromList . flip Y.mapMaybe tuples
+    $ \(ma2, _, mn) -> do
+        a2 <- ma2
+        n <- mn
+        return (n, a2)
 
 -- | Cache 'Numeric' -> 'Alpha3' conversions, and provide faster lookup.
 na3 :: M.HashMap N.Numeric A3.Alpha3
-na3 = M.fromList $ map (\(_, a3, n) -> (n, a3)) tuples
+na3 = M.fromList . flip Y.mapMaybe tuples
+    $ \(_, ma3, mn) -> do
+        a3 <- ma3
+        n <- mn
+        return (n, a3)
