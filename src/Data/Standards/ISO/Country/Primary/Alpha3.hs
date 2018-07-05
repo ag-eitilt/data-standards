@@ -61,6 +61,22 @@ import qualified Data.Hashable as H
 
 {-# WARNING GBD,GBN,GBO,GBP,GBS,UNA,UNK,UNO "Not an official ISO 3166-1 code" #-}
 
+{-# DEPRECATED CTE "Use new code KIR or ISO 3166-3 code CTKI" #-}
+{-# DEPRECATED DDR "Use new code DEU or ISO 3166-3 code DDDE" #-}
+{-# DEPRECATED HVO "Use new code BFA or ISO 3166-3 code HVBF" #-}
+{-# DEPRECATED JTN "Use new code UMI or ISO 3166-3 code JTUM" #-}
+{-# DEPRECATED MID "Use new code UMI or ISO 3166-3 code MIUM" #-}
+{-# DEPRECATED NHB "Use new code VUT or ISO 3166-3 code NHVU" #-}
+{-# DEPRECATED ATN "Use new code ATA or ISO 3166-3 code NQAQ" #-}
+{-# DEPRECATED PCI "Divided into FSM, MHL, MNP and PLW, or use ISO 3166-3 code PCHH" #-}
+{-# DEPRECATED PUS "Use new code UMI or ISO 3166-3 code PUUM" #-}
+{-# DEPRECATED PCZ "Use new code PAN or ISO 3166-3 code PZPA" #-}
+{-# DEPRECATED RHO "Use new code ZWE or ISO 3166-3 code RHZW" #-}
+{-# DEPRECATED SKM "Use new code IND or ISO 3166-3 code SKIN" #-}
+{-# DEPRECATED VDR "Use new code VNM or ISO 3166-3 code VDVN" #-}
+{-# DEPRECATED WAK "Use new code UMI or ISO 3166-3 code WKUM" #-}
+{-# DEPRECATED YMD "Use new code YEM or ISO 3166-3 code YDYE" #-}
+
 -- | The official codes for countries with less collisions and therefore more
 -- similar to the full name, translated into a type-safe representation.  Unless
 -- otherwise specified, all codes are 'Official'.
@@ -68,6 +84,7 @@ data Alpha3
     = ABW  -- ^ Aruba
     | ADN  -- ^ 'IndeterminateReservation': Aden (road vehicles)
     | AFG  -- ^ Afghanistan
+    | AFI  -- ^ 'Withdrawn': French Afar and Issas
     | AGO  -- ^ Angola
     | AIA  -- ^ Anguilla
     | ALA  -- ^ Åland Islands
@@ -80,8 +97,10 @@ data Alpha3
     | ASC  -- ^ 'ExceptionalReservation': Ascension Island
     | ASM  -- ^ American Samoa
     | ATA  -- ^ Antarctica
+    | ATB  -- ^ 'Withdrawn': British Antarctic Territory (the)
     | ATF  -- ^ French Southern Territories (the)
     | ATG  -- ^ Antigua and Barbuda
+    | ATN  -- ^ 'Withdrawn': Dronning Maud Land
     | AUS  -- ^ Australia
     | AUT  -- ^ Austria
     | AZE  -- ^ Azerbaijan
@@ -130,6 +149,7 @@ data Alpha3
     | CPV  -- ^ Cabo Verde
     | CRI  -- ^ Costa Rica
     | CSK  -- ^ 'TransitionalReservation': Czechoslovakia
+    | CTE  -- ^ 'Withdrawn': Canton and Enderbury Islands (the)
     | CUB  -- ^ Cuba
     | CUW  -- ^ Curaçao
     | CXR  -- ^ Christmas Island
@@ -137,8 +157,10 @@ data Alpha3
     | CYP  -- ^ Cyprus
     | CZE  -- ^ Czechia
 
+    | DDR  -- ^ 'Withdrawn': German Democratic Republic (the)
     | DEU  -- ^ Germany
     | DGA  -- ^ 'ExceptionalReservation': Diego Garcia
+    | DHY  -- ^ 'Withdrawn': Dahomey
     | DJI  -- ^ Djibouti
     | DMA  -- ^ Dominica
     | DNK  -- ^ Denmark
@@ -179,6 +201,7 @@ data Alpha3
     | GBZ  -- ^ 'IndeterminateReservation': Gibraltar (road vehicles)
     | GCA  -- ^ 'IndeterminateReservation': Guatemala (road vehicles)
     | GEO  -- ^ Georgia
+    | GEL  -- ^ 'Withdrawn': Gilbert and Ellice Islands (the)
     | GGY  -- ^ Guernsey
     | GHA  -- ^ Ghana
     | GIB  -- ^ Gibraltar
@@ -202,6 +225,7 @@ data Alpha3
     | HRV  -- ^ Croatia
     | HTI  -- ^ Haiti
     | HUN  -- ^ Hungary
+    | HVO  -- ^ 'Withdrawn': Upper Volta
 
     | IDN  -- ^ Indonesia
     | IMN  -- ^ Isle of Man
@@ -218,6 +242,7 @@ data Alpha3
     | JEY  -- ^ Jersey
     | JOR  -- ^ Jordan
     | JPN  -- ^ Japan
+    | JTN  -- ^ 'Withdrawn': Johnston Island
 
     | KAZ  -- ^ Kazakhstan
     | KEN  -- ^ Kenya
@@ -250,6 +275,7 @@ data Alpha3
     | MDV  -- ^ Maldives
     | MEX  -- ^ Mexico
     | MHL  -- ^ Marshall Islands (the)
+    | MID  -- ^ 'Withdrawn': Midway Islands (the)
     | MKD  -- ^ Macedonia (the former Yugoslav Republic of)
     | MLI  -- ^ Mali
     | MLT  -- ^ Malta
@@ -271,6 +297,7 @@ data Alpha3
     | NER  -- ^ Niger (the)
     | NFK  -- ^ Norfolk Island
     | NGA  -- ^ Nigeria
+    | NHB  -- ^ 'Withdrawn': New Hebrides
     | NIC  -- ^ Nicaragua
     | NIU  -- ^ Niue
     | NLD  -- ^ Netherlands (the)
@@ -285,7 +312,10 @@ data Alpha3
     | PAK  -- ^ Pakistan
     | PAN  -- ^ Panama
     | PCN  -- ^ Pitcairn
+    | PCI  -- ^ 'Withdrawn': Pacific Islands (Trust Territory of the)
+    | PCZ  -- ^ 'Withdrawn': Panama Canal Zone (the)
     | PER  -- ^ Peru
+    | PHI  -- ^ 'Withdrawn': Philippines
     | PHL  -- ^ Philippines (the)
     | PLW  -- ^ Palau
     | PNG  -- ^ Papua New Guinea
@@ -295,6 +325,7 @@ data Alpha3
     | PRT  -- ^ Portugal
     | PRY  -- ^ Paraguay
     | PSE  -- ^ Palestine, State of
+    | PUS  -- ^ 'Withdrawn': United States Miscellaneous Pacific Islands (the)
     | PYF  -- ^ French Polynesia
 
     | QAT  -- ^ Qatar
@@ -303,6 +334,7 @@ data Alpha3
     | RCB  -- ^ 'IndeterminateReservation': Congo, People's Republic of (road vehicles)
     | RCH  -- ^ 'IndeterminateReservation': Chile (road vehicles)
     | REU  -- ^ Réunion
+    | RHO  -- ^ 'Withdrawn': Southern Rhodesia
     | RMM  -- ^ 'IndeterminateReservation': Mali (road vehicles)
     | RNR  -- ^ 'IndeterminateReservation': Zambia (road vehicles)
     | ROK  -- ^ 'IndeterminateReservation': Korea, Republic of (road vehicles)
@@ -321,6 +353,7 @@ data Alpha3
     | SGS  -- ^ South Georgia and the South Sandwich Islands
     | SHN  -- ^ Saint Helena, Ascension and Tristan da Cunha
     | SJM  -- ^ Svalbard and Jan Mayen
+    | SKM  -- ^ 'Withdrawn': Sikkim
     | SLB  -- ^ Solomon Islands
     | SLE  -- ^ Sierra Leone
     | SLO  -- ^ 'IndeterminateReservation': Slovenia (road vehicles)
@@ -373,6 +406,7 @@ data Alpha3
 
     | VAT  -- ^ Holy See (the)
     | VCT  -- ^ Saint Vincent and the Grenadines
+    | VDR  -- ^ 'Withdrawn': Viet Nam (Democratic Republic of)
     | VEN  -- ^ Venezuela (Bolivarian Republic of)
     | VGB  -- ^ Virgin Islands (British)
     | VIR  -- ^ Virgin Islands (U.S.)
@@ -380,12 +414,14 @@ data Alpha3
     | VUT  -- ^ Vanuatu
 
     | WAG  -- ^ 'IndeterminateReservation': Gambia (road vehicles)
+    | WAK  -- ^ 'Withdrawn': Wake Island
     | WAL  -- ^ 'IndeterminateReservation': Sierra Leone (road vehicles)
     | WAN  -- ^ 'IndeterminateReservation': Nigeria (road vehicles)
     | WLF  -- ^ Wallis and Futuna
     | WSM  -- ^ Samoa
 
     | YEM  -- ^ Yemen
+    | YMD  -- ^ 'Withdrawn': Yemen (Democratic)
     | YUG  -- ^ 'TransitionalReservation': Yugoslavia
 
     | ZAF  -- ^ South Africa
@@ -401,8 +437,11 @@ instance H.Hashable Alpha3 where
 -- | The stability of any particular country code.
 codeStatus :: Alpha3 -> Status
 codeStatus ADN = IndeterminateReservation
+codeStatus AFI = Withdrawn
 codeStatus ANT = TransitionalReservation
 codeStatus ASC = ExceptionalReservation
+codeStatus ATB = Withdrawn
+codeStatus ATN = Withdrawn
 codeStatus BDS = IndeterminateReservation
 codeStatus BRU = IndeterminateReservation
 codeStatus BUR = TransitionalReservation
@@ -410,7 +449,10 @@ codeStatus BYS = TransitionalReservation
 codeStatus CDN = IndeterminateReservation
 codeStatus CPT = ExceptionalReservation
 codeStatus CSK = TransitionalReservation
+codeStatus CTE = Withdrawn
+codeStatus DDR = Withdrawn
 codeStatus DGA = ExceptionalReservation
+codeStatus DHY = Withdrawn
 codeStatus EAK = IndeterminateReservation
 codeStatus EAT = IndeterminateReservation
 codeStatus EAU = IndeterminateReservation
@@ -427,12 +469,22 @@ codeStatus GBP = NotInUse
 codeStatus GBS = NotInUse
 codeStatus GBZ = IndeterminateReservation
 codeStatus GCA = IndeterminateReservation
+codeStatus GEL = Withdrawn
 codeStatus HKJ = IndeterminateReservation
+codeStatus HVO = Withdrawn
+codeStatus JTN = Withdrawn
 codeStatus MAL = IndeterminateReservation
+codeStatus MID = Withdrawn
+codeStatus NHB = Withdrawn
 codeStatus NTZ = TransitionalReservation
+codeStatus PCI = Withdrawn
+codeStatus PCZ = Withdrawn
+codeStatus PHI = Withdrawn
+codeStatus PUS = Withdrawn
 codeStatus RCA = IndeterminateReservation
 codeStatus RCB = IndeterminateReservation
 codeStatus RCH = IndeterminateReservation
+codeStatus RHO = Withdrawn
 codeStatus RMM = IndeterminateReservation
 codeStatus RNR = IndeterminateReservation
 codeStatus ROK = IndeterminateReservation
@@ -440,6 +492,7 @@ codeStatus ROM = TransitionalReservation
 codeStatus RSM = IndeterminateReservation
 codeStatus RSR = IndeterminateReservation
 codeStatus SCG = TransitionalReservation
+codeStatus SKM = Withdrawn
 codeStatus SLO = IndeterminateReservation
 codeStatus SME = IndeterminateReservation
 codeStatus SUN = ExceptionalReservation
@@ -449,9 +502,12 @@ codeStatus TMP = TransitionalReservation
 codeStatus UNA = NotInUse
 codeStatus UNK = NotInUse
 codeStatus UNO = NotInUse
+codeStatus VDR = Withdrawn
 codeStatus WAG = IndeterminateReservation
+codeStatus WAK = Withdrawn
 codeStatus WAL = IndeterminateReservation
 codeStatus WAN = IndeterminateReservation
+codeStatus YMD = Withdrawn
 codeStatus YUG = TransitionalReservation
 codeStatus ZAR = TransitionalReservation
 codeStatus ZRE = IndeterminateReservation

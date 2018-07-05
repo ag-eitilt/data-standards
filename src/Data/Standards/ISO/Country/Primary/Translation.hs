@@ -84,6 +84,7 @@ tuples =
     , (Just A2.BM, Just A3.BMU, Just N.C060)  -- Bermuda
     , (Just A2.BN, Just A3.BRN, Just N.C096)  -- Brunei Darussalam
     , (Just A2.BO, Just A3.BOL, Just N.C068)  -- Bolivia (Plurinational State of)
+    , (Nothing   , Just A3.ATB, Just N.C080)  -- British Antarctic Territory (the)
     , (Just A2.BQ, Just A3.BES, Just N.C535)  -- Bonaire, Sint Eustatius and Saba
     , (Just A2.BR, Just A3.BRA, Just N.C076)  -- Brazil
     , (Just A2.BS, Just A3.BHS, Just N.C044)  -- Bahamas (the)
@@ -110,6 +111,7 @@ tuples =
     , (Just A2.CR, Just A3.CRI, Just N.C188)  -- Costa Rica
     , (Nothing   , Just A3.CSK, Just N.C200)  -- Czechoslovakia
     , (Just A2.CS, Just A3.SCG, Just N.C891)  -- Serbia and Montenegro
+    , (Just A2.CT, Just A3.CTE, Just N.C128)  -- Canton and Enderbury Islands (the)
     , (Just A2.CU, Just A3.CUB, Just N.C192)  -- Cuba
     , (Just A2.CV, Just A3.CPV, Just N.C132)  -- Cabo Verde
     , (Just A2.CW, Just A3.CUW, Just N.C531)  -- Curaçao
@@ -117,6 +119,7 @@ tuples =
     , (Just A2.CY, Just A3.CYP, Just N.C196)  -- Cyprus
     , (Just A2.CZ, Just A3.CZE, Just N.C203)  -- Czechia
 
+    , (Just A2.DD, Just A3.DDR, Just N.C278)  -- German Democratic Republic (the)
     , (Just A2.DE, Just A3.DEU, Just N.C276)  -- Germany
     , (Just A2.DG, Just A3.DGA, Nothing    )  -- Diego Garcia
     , (Just A2.DJ, Just A3.DJI, Just N.C262)  -- Djibouti
@@ -170,6 +173,7 @@ tuples =
     , (Just A2.HR, Just A3.HRV, Just N.C191)  -- Croatia
     , (Just A2.HT, Just A3.HTI, Just N.C332)  -- Haiti
     , (Just A2.HU, Just A3.HUN, Just N.C348)  -- Hungary
+    , (Just A2.HV, Just A3.HVO, Nothing    )  -- Upper Volta
 
     , (Just A2.IC, Nothing    , Nothing    )  -- Canary Islands
     , (Just A2.ID, Just A3.IDN, Just N.C360)  -- Indonesia
@@ -187,6 +191,7 @@ tuples =
     , (Just A2.JM, Just A3.JAM, Just N.C388)  -- Jamaica
     , (Just A2.JO, Just A3.JOR, Just N.C400)  -- Jordan
     , (Just A2.JP, Just A3.JPN, Just N.C392)  -- Japan
+    , (Just A2.JT, Just A3.JTN, Just N.C396)  -- Johnston Island
 
     , (Just A2.KE, Just A3.KEN, Just N.C404)  -- Kenya
     , (Just A2.KG, Just A3.KGZ, Just N.C417)  -- Kyrgyzstan
@@ -219,6 +224,7 @@ tuples =
     , (Just A2.MF, Just A3.MAF, Just N.C663)  -- Saint Martin (French part)
     , (Just A2.MG, Just A3.MDG, Just N.C450)  -- Madagascar
     , (Just A2.MH, Just A3.MHL, Just N.C584)  -- Marshall Islands (the)
+    , (Just A2.MI, Just A3.MID, Just N.C488)  -- Midway Islands (the)
     , (Just A2.MK, Just A3.MKD, Just N.C807)  -- Macedonia (the former Yugoslav Republic of)
     , (Just A2.ML, Just A3.MLI, Just N.C466)  -- Mali
     , (Just A2.MM, Just A3.MMR, Just N.C104)  -- Myanmar
@@ -241,18 +247,21 @@ tuples =
     , (Just A2.NE, Just A3.NER, Just N.C562)  -- Niger (the)
     , (Just A2.NF, Just A3.NFK, Just N.C574)  -- Norfolk Island
     , (Just A2.NG, Just A3.NGA, Just N.C566)  -- Nigeria
+    , (Just A2.NH, Just A3.NHB, Nothing    )  -- New Hebrides
     , (Just A2.NI, Just A3.NIC, Just N.C558)  -- Nicaragua
     , (Just A2.NL, Just A3.NLD, Just N.C528)  -- Netherlands (the)
     , (Just A2.NO, Just A3.NOR, Just N.C578)  -- Norway
     , (Just A2.NP, Just A3.NPL, Just N.C524)  -- Nepal
+    , (Just A2.NQ, Just A3.ATN, Just N.C216)  -- Dronning Maud Land
     , (Just A2.NR, Just A3.NRU, Just N.C520)  -- Nauru
-    , (Just A2.NT, Just A3.NTZ, Just N.C536)  -- Saudi Arabian-Iraqi neutral zone
+    , (Just A2.NT, Just A3.NTZ, Just N.C536)  -- Saudi Arabian-Iraqi neutral zone (the)
     , (Just A2.NU, Just A3.NIU, Just N.C570)  -- Niue
     , (Just A2.NZ, Just A3.NZL, Just N.C554)  -- New Zealand
 
     , (Just A2.OM, Just A3.OMN, Just N.C512)  -- Oman
 
     , (Just A2.PA, Just A3.PAN, Just N.C591)  -- Panama
+    , (Just A2.PC, Just A3.PCI, Just N.C582)  -- Pacific Islands (Trust Territory of the)
     , (Just A2.PE, Just A3.PER, Just N.C604)  -- Peru
     , (Just A2.PF, Just A3.PYF, Just N.C258)  -- French Polynesia
     , (Just A2.PG, Just A3.PNG, Just N.C598)  -- Papua New Guinea
@@ -264,8 +273,10 @@ tuples =
     , (Just A2.PR, Just A3.PRI, Just N.C630)  -- Puerto Rico
     , (Just A2.PS, Just A3.PSE, Just N.C275)  -- Palestine, State of
     , (Just A2.PT, Just A3.PRT, Just N.C620)  -- Portugal
+    , (Just A2.PU, Just A3.PUS, Just N.C849)  -- United States Miscellaneous Pacific Islands (the)
     , (Just A2.PW, Just A3.PLW, Just N.C585)  -- Palau
     , (Just A2.PY, Just A3.PRY, Just N.C600)  -- Paraguay
+    , (Just A2.PZ, Just A3.PCZ, Just N.C594)  -- Panama Canal Zone (the)
 
     , (Just A2.QA, Just A3.QAT, Just N.C634)  -- Qatar
 
@@ -284,6 +295,7 @@ tuples =
     , (Just A2.SH, Just A3.SHN, Just N.C654)  -- Saint Helena, Ascension and Tristan da Cunha
     , (Just A2.SI, Just A3.SVN, Just N.C705)  -- Slovenia
     , (Just A2.SJ, Just A3.SJM, Just N.C744)  -- Svalbard and Jan Mayen
+    , (Nothing   , Just A3.SKM, Just N.C698)  -- Sikkim
     , (Just A2.SK, Just A3.SVK, Just N.C703)  -- Slovakia
     , (Just A2.SL, Just A3.SLE, Just N.C694)  -- Sierra Leone
     , (Just A2.SM, Just A3.SMR, Just N.C674)  -- San Marino
@@ -293,7 +305,7 @@ tuples =
     , (Just A2.SS, Just A3.SSD, Just N.C728)  -- South Sudan
     , (Just A2.ST, Just A3.STP, Just N.C678)  -- Sao Tome and Principe
     , (Just A2.SV, Just A3.SLV, Just N.C222)  -- El Salvador
-    , (Just A2.SU, Just A3.SUN, Just N.C810)  -- USSR
+    , (Just A2.SU, Just A3.SUN, Just N.C810)  -- USSR (the)
     , (Just A2.SX, Just A3.SXM, Just N.C534)  -- Sint Maarten (Dutch part)
     , (Just A2.SY, Just A3.SYR, Just N.C760)  -- Syrian Arab Republic
     , (Just A2.SZ, Just A3.SWZ, Just N.C748)  -- Swaziland
@@ -328,6 +340,7 @@ tuples =
 
     , (Just A2.VA, Just A3.VAT, Just N.C336)  -- Holy See (the)
     , (Just A2.VC, Just A3.VCT, Just N.C670)  -- Saint Vincent and the Grenadines
+    , (Just A2.VD, Just A3.VDR, Just N.C714)  -- Viet Nam (Democratic Republic of)
     , (Just A2.VE, Just A3.VEN, Just N.C862)  -- Venezuela (Bolivarian Republic of)
     , (Just A2.VG, Just A3.VGB, Just N.C092)  -- Virgin Islands (British)
     , (Just A2.VI, Just A3.VIR, Just N.C850)  -- Virgin Islands (U.S.)
@@ -335,8 +348,10 @@ tuples =
     , (Just A2.VU, Just A3.VUT, Just N.C548)  -- Vanuatu
 
     , (Just A2.WF, Just A3.WLF, Just N.C876)  -- Wallis and Futuna
+    , (Just A2.WK, Just A3.WAK, Just N.C872)  -- Wake Island
     , (Just A2.WS, Just A3.WSM, Just N.C882)  -- Samoa
 
+    , (Just A2.YD, Just A3.YMD, Just N.C720)  -- Yemen (Democratic)
     , (Just A2.YE, Just A3.YEM, Just N.C887)  -- Yemen
     , (Just A2.YT, Just A3.MYT, Just N.C175)  -- Mayotte
     , (Just A2.YU, Just A3.YUG, Just N.C890)  -- Yugoslavia

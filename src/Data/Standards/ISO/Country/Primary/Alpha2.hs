@@ -48,6 +48,21 @@ import qualified Data.Hashable as H
 
 {-# WARNING AP,BX,EF,EM,EP,EV,GC,IB,OA,WO "Not an official ISO 3166-1 code" #-}
 
+{-# DEPRECATED CT "Use new code KI or ISO 3166-3 code CTKI" #-}
+{-# DEPRECATED DD "Use new code DE or ISO 3166-3 code DDDE" #-}
+{-# DEPRECATED FQ "Divided into TF and part of AQ, or use ISO 3166-3 code FQHH" #-}
+{-# DEPRECATED HV "Use new code BF or ISO 3166-3 code HVBF" #-}
+{-# DEPRECATED JT "Use new code UM or ISO 3166-3 code JTUM" #-}
+{-# DEPRECATED MI "Use new code UM or ISO 3166-3 code MIUM" #-}
+{-# DEPRECATED NH "Use new code VU or ISO 3166-3 code NHVU" #-}
+{-# DEPRECATED NQ "Use new code AQ or ISO 3166-3 code NQAQ" #-}
+{-# DEPRECATED PC "Divided into FM, MH, MP and PW, or use ISO 3166-3 code PCHH" #-}
+{-# DEPRECATED PU "Use new code UM or ISO 3166-3 code PUUM" #-}
+{-# DEPRECATED PZ "Use new code PA or ISO 3166-3 code PZPA" #-}
+{-# DEPRECATED VD "Use new code VN or ISO 3166-3 code VDVN" #-}
+{-# DEPRECATED WK "Use new code UM or ISO 3166-3 code WKUM" #-}
+{-# DEPRECATED YD "Use new code YE or ISO 3166-3 code YDYE" #-}
+
 -- | The official, recommended codes for countries, translated into a type-safe
 -- representation.  Unless otherwise specified, all codes are 'Official'.
 data Alpha2
@@ -56,7 +71,7 @@ data Alpha2
     | AE  -- ^ United Arab Emirates (the)
     | AF  -- ^ Afghanistan
     | AG  -- ^ Antigua and Barbuda
-    | AI  -- ^ Anguilla
+    | AI  -- ^ Anguilla; previously French Afar and Issas
     | AL  -- ^ Albania
     | AM  -- ^ Armenia
     | AN  -- ^ 'TransitionalReservation': Netherlands Antilles
@@ -84,7 +99,7 @@ data Alpha2
     | BM  -- ^ Bermuda
     | BN  -- ^ Brunei Darussalam
     | BO  -- ^ Bolivia (Plurinational State of)
-    | BQ  -- ^ Bonaire, Sint Eustatius and Saba
+    | BQ  -- ^ Bonaire, Sint Eustatius and Saba; previously British Antarctic Territory (the)
     | BR  -- ^ Brazil
     | BS  -- ^ Bahamas (the)
     | BT  -- ^ Bhutan
@@ -110,6 +125,7 @@ data Alpha2
     | CP  -- ^ 'ExceptionalReservation': Clipperton Island
     | CR  -- ^ Costa Rica
     | CS  -- ^ 'TransitionalReservation': Serbia and Montenegro; previously Czechoslovakia
+    | CT  -- ^ 'Withdrawn': Canton and Enderbury Islands (the)
     | CU  -- ^ Cuba
     | CV  -- ^ Cabo Verde
     | CW  -- ^ Curaçao
@@ -117,13 +133,14 @@ data Alpha2
     | CY  -- ^ Cyprus
     | CZ  -- ^ Czechia
 
+    | DD  -- ^ 'Withdrawn': German Democratic Republic (the)
     | DE  -- ^ Germany
     | DG  -- ^ 'ExceptionalReservation': Diego Garcia
     | DJ  -- ^ Djibouti
     | DK  -- ^ Denmark
     | DM  -- ^ Dominica
     | DO  -- ^ Dominican Republic (the)
-    | DY  -- ^ 'IndeterminateReservation': Benin (road vehicles)
+    | DY  -- ^ 'IndeterminateReservation': Benin (road vehicles); previously Dahomey
     | DZ  -- ^ Algeria
 
     | EA  -- ^ 'ExceptionalReservation': Ceuta & Melilla
@@ -148,6 +165,7 @@ data Alpha2
     | FL  -- ^ 'IndeterminateReservation': Liechtenstein (road vehicles)
     | FM  -- ^ Micronesia (Federated States of)
     | FO  -- ^ Faroe Islands (the)
+    | FQ  -- ^ 'Withdrawn': French Southern and Antarctic Territories (the)
     | FR  -- ^ France
     | FX  -- ^ 'ExceptionalReservation': France, Metropolitan
 
@@ -155,7 +173,7 @@ data Alpha2
     | GB  -- ^ United Kingdom of Great Britain and Northern Ireland (the)
     | GC  -- ^ 'NotInUse': Patent Office of the Cooperation Council for the Arab States of the Gulf
     | GD  -- ^ Grenada
-    | GE  -- ^ Georgia
+    | GE  -- ^ Georgia; previously Gilbert and Ellice Islands (the)
     | GF  -- ^ French Guiana
     | GG  -- ^ Guernsey
     | GH  -- ^ Ghana
@@ -178,6 +196,7 @@ data Alpha2
     | HR  -- ^ Croatia
     | HT  -- ^ Haiti
     | HU  -- ^ Hungary
+    | HV  -- ^ 'Withdrawn': Upper Volta
 
     | IB  -- ^ 'NotInUse': World Intellectual Property Organization, International Bureau
     | IC  -- ^ 'ExceptionalReservation': Canary Islands (the)
@@ -197,6 +216,7 @@ data Alpha2
     | JM  -- ^ Jamaica
     | JO  -- ^ Jordan
     | JP  -- ^ Japan
+    | JT  -- ^ 'Withdrawn': Johnston Island
 
     | KE  -- ^ Kenya
     | KG  -- ^ Kyrgyzstan
@@ -230,6 +250,7 @@ data Alpha2
     | MF  -- ^ Saint Martin (French part)
     | MG  -- ^ Madagascar
     | MH  -- ^ Marshall Islands (the)
+    | MI  -- ^ 'Withdrawn': Midway Islands (the)
     | MK  -- ^ Macedonia (the former Yugoslav Republic of)
     | ML  -- ^ Mali
     | MM  -- ^ Myanmar
@@ -252,10 +273,12 @@ data Alpha2
     | NE  -- ^ Niger (the)
     | NF  -- ^ Norfolk Island
     | NG  -- ^ Nigeria
+    | NH  -- ^ 'Withdrawn': New Hebrides
     | NI  -- ^ Nicaragua
     | NL  -- ^ Netherlands (the)
     | NO  -- ^ Norway
     | NP  -- ^ Nepal
+    | NQ  -- ^ 'Withdrawn': Dronning Maud Land
     | NR  -- ^ Nauru
     | NT  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone (the)
     | NU  -- ^ Niue
@@ -265,6 +288,7 @@ data Alpha2
     | OM  -- ^ Oman
 
     | PA  -- ^ Panama
+    | PC  -- ^ 'Withdrawn': Pacific Islands (Trust Territory of the)
     | PE  -- ^ Peru
     | PF  -- ^ French Polynesia
     | PG  -- ^ Papua New Guinea
@@ -277,8 +301,10 @@ data Alpha2
     | PR  -- ^ Puerto Rico
     | PS  -- ^ Palestine, State of
     | PT  -- ^ Portugal
+    | PU  -- ^ 'Withdrawn': United States Miscellaneous Pacific Islands (the)
     | PW  -- ^ Palau
     | PY  -- ^ Paraguay
+    | PZ  -- ^ 'Withdrawn': Panama Canal Zone (the)
 
     | QA  -- ^ Qatar
 
@@ -286,7 +312,7 @@ data Alpha2
     | RB  -- ^ 'IndeterminateReservation': Bolivia & Botswana (road vehicles)
     | RC  -- ^ 'IndeterminateReservation': China (road vehicles)
     | RE  -- ^ Réunion
-    | RH  -- ^ 'IndeterminateReservation': Haiti (road vehicles)
+    | RH  -- ^ 'IndeterminateReservation': Haiti (road vehicles); previously Southern Rhodesia
     | RI  -- ^ 'IndeterminateReservation': Indonesia (road vehicles)
     | RM  -- ^ 'IndeterminateReservation': Madagascar (road vehicles)
     | RN  -- ^ 'IndeterminateReservation': Niger (road vehicles)
@@ -306,7 +332,7 @@ data Alpha2
     | SH  -- ^ Saint Helena, Ascension and Tristan da Cunha
     | SI  -- ^ Slovenia
     | SJ  -- ^ Svalbard and Jan Mayen
-    | SK  -- ^ Slovakia
+    | SK  -- ^ Slovakia; previously Sikkim
     | SL  -- ^ Sierra Leone
     | SM  -- ^ San Marino
     | SN  -- ^ Senegal
@@ -350,6 +376,7 @@ data Alpha2
 
     | VA  -- ^ Holy See (the)
     | VC  -- ^ Saint Vincent and the Grenadines
+    | VD  -- ^ 'Withdrawn': Viet Nam (Democratic Republic of)
     | VE  -- ^ Venezuela (Bolivarian Republic of)
     | VG  -- ^ Virgin Islands (British)
     | VI  -- ^ Virgin Islands (U.S.)
@@ -358,11 +385,13 @@ data Alpha2
 
     | WF  -- ^ Wallis and Futuna
     | WG  -- ^ 'IndeterminateReservation': Grenada (road vehicles)
+    | WK  -- ^ 'Withdrawn': Wake Island
     | WL  -- ^ 'IndeterminateReservation': Saint Lucia (road vehicles)
     | WO  -- ^ 'NotInUse': World Intellectual Property Organization
     | WS  -- ^ Samoa
     | WV  -- ^ 'IndeterminateReservation': Saint Vincent (road vehicles)
 
+    | YD  -- ^ 'Withdrawn': Yemen (Democratic)
     | YE  -- ^ Yemen
     | YT  -- ^ Mayotte
     | YU  -- ^ 'TransitionalReservation': Yugoslavia
@@ -386,6 +415,8 @@ codeStatus BU = TransitionalReservation
 codeStatus BX = NotInUse
 codeStatus CP = ExceptionalReservation
 codeStatus CS = TransitionalReservation
+codeStatus CT = Withdrawn
+codeStatus DD = Withdrawn
 codeStatus DG = ExceptionalReservation
 codeStatus DY = IndeterminateReservation
 codeStatus EA = ExceptionalReservation
@@ -397,15 +428,24 @@ codeStatus EV = NotInUse
 codeStatus EW = IndeterminateReservation
 codeStatus EZ = ExceptionalReservation
 codeStatus FL = IndeterminateReservation
+codeStatus FQ = Withdrawn
 codeStatus FX = ExceptionalReservation
 codeStatus GC = NotInUse
+codeStatus HV = Withdrawn
 codeStatus IB = NotInUse
 codeStatus IC = ExceptionalReservation
 codeStatus JA = IndeterminateReservation
+codeStatus JT = Withdrawn
 codeStatus LF = IndeterminateReservation
 codeStatus NT = TransitionalReservation
+codeStatus MI = Withdrawn
+codeStatus NH = Withdrawn
+codeStatus NQ = Withdrawn
 codeStatus OA = NotInUse
+codeStatus PC = Withdrawn
 codeStatus PI = IndeterminateReservation
+codeStatus PU = Withdrawn
+codeStatus PZ = Withdrawn
 codeStatus RA = IndeterminateReservation
 codeStatus RB = IndeterminateReservation
 codeStatus RC = IndeterminateReservation
@@ -420,10 +460,13 @@ codeStatus TA = ExceptionalReservation
 codeStatus TP = TransitionalReservation
 codeStatus UK = ExceptionalReservation
 codeStatus UN = ExceptionalReservation
+codeStatus VD = Withdrawn
 codeStatus WG = IndeterminateReservation
+codeStatus WK = Withdrawn
 codeStatus WL = IndeterminateReservation
 codeStatus WO = NotInUse
 codeStatus WV = IndeterminateReservation
+codeStatus YD = Withdrawn
 codeStatus YU = TransitionalReservation
 codeStatus YV = IndeterminateReservation
 codeStatus ZR = TransitionalReservation
