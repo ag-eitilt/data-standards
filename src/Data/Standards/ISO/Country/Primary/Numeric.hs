@@ -6,9 +6,13 @@
  -   Stability   : unstable
  -   Portability : portable
  -}
-module Data.Standards.ISO.Country.Primary.Numeric where
+module Data.Standards.ISO.Country.Primary.Numeric
+    ( Numeric ( .. )
+    , Status ( .. )
+    , codeStatus
+    ) where
 
-import qualified Data.Standards.ISO.Country.Primary.Common as C
+import Data.Standards.ISO.Country.Primary.Common
 
 import qualified Data.Hashable as H
 
@@ -295,12 +299,12 @@ instance H.Hashable Numeric where
     hashWithSalt = H.hashUsing fromEnum
 
 -- | The stability of any particular country code.
-codeStatus :: Numeric -> C.Status
-codeStatus C200 = C.Withdrawn
-codeStatus C249 = C.Withdrawn
-codeStatus C530 = C.Withdrawn
-codeStatus C536 = C.Withdrawn
-codeStatus C810 = C.Withdrawn
-codeStatus C890 = C.Withdrawn
-codeStatus C891 = C.Withdrawn
-codeStatus _ = C.Official
+codeStatus :: Numeric -> Status
+codeStatus C200 = Withdrawn
+codeStatus C249 = Withdrawn
+codeStatus C530 = Withdrawn
+codeStatus C536 = Withdrawn
+codeStatus C810 = Withdrawn
+codeStatus C890 = Withdrawn
+codeStatus C891 = Withdrawn
+codeStatus _ = Official

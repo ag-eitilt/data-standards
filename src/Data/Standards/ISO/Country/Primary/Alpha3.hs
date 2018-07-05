@@ -6,9 +6,13 @@
  -   Stability   : unstable
  -   Portability : portable
  -}
-module Data.Standards.ISO.Country.Primary.Alpha3 where
+module Data.Standards.ISO.Country.Primary.Alpha3
+    ( Alpha3 ( .. )
+    , Status ( .. )
+    , codeStatus
+    ) where
 
-import qualified Data.Standards.ISO.Country.Primary.Common as C
+import Data.Standards.ISO.Country.Primary.Common
 
 import qualified Data.Hashable as H
 
@@ -218,7 +222,7 @@ data Alpha3
     | NOR  -- ^ Norway
     | NPL  -- ^ Nepal
     | NRU  -- ^ Nauru
-    | NTZ  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone
+    | NTZ  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone (the)
     | NZL  -- ^ New Zealand
 
     | OMN  -- ^ Oman
@@ -263,7 +267,7 @@ data Alpha3
     | SRB  -- ^ Serbia
     | SSD  -- ^ South Sudan
     | STP  -- ^ Sao Tome and Principe
-    | SUN  -- ^ 'ExceptionalReservation': USSR
+    | SUN  -- ^ 'ExceptionalReservation': USSR (the)
     | SUR  -- ^ Suriname
     | SVK  -- ^ Slovakia
     | SVN  -- ^ Slovenia
@@ -322,21 +326,21 @@ instance H.Hashable Alpha3 where
     hashWithSalt = H.hashUsing fromEnum
 
 -- | The stability of any particular country code.
-codeStatus :: Alpha3 -> C.Status
-codeStatus ASC = C.ExceptionalReservation
-codeStatus ANT = C.TransitionalReservation
-codeStatus BUR = C.TransitionalReservation
-codeStatus BYS = C.TransitionalReservation
-codeStatus CPT = C.ExceptionalReservation
-codeStatus CSK = C.TransitionalReservation
-codeStatus DGA = C.ExceptionalReservation
-codeStatus FXX = C.ExceptionalReservation
-codeStatus NTZ = C.TransitionalReservation
-codeStatus ROM = C.TransitionalReservation
-codeStatus SCG = C.TransitionalReservation
-codeStatus SUN = C.ExceptionalReservation
-codeStatus TAA = C.ExceptionalReservation
-codeStatus TMP = C.TransitionalReservation
-codeStatus YUG = C.TransitionalReservation
-codeStatus ZAR = C.TransitionalReservation
-codeStatus _ = C.Official
+codeStatus :: Alpha3 -> Status
+codeStatus ANT = TransitionalReservation
+codeStatus ASC = ExceptionalReservation
+codeStatus BUR = TransitionalReservation
+codeStatus BYS = TransitionalReservation
+codeStatus CPT = ExceptionalReservation
+codeStatus CSK = TransitionalReservation
+codeStatus DGA = ExceptionalReservation
+codeStatus FXX = ExceptionalReservation
+codeStatus NTZ = TransitionalReservation
+codeStatus ROM = TransitionalReservation
+codeStatus SCG = TransitionalReservation
+codeStatus SUN = ExceptionalReservation
+codeStatus TAA = ExceptionalReservation
+codeStatus TMP = TransitionalReservation
+codeStatus YUG = TransitionalReservation
+codeStatus ZAR = TransitionalReservation
+codeStatus _ = Official

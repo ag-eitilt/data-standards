@@ -6,9 +6,13 @@
  -   Stability   : unstable
  -   Portability : portable
  -}
-module Data.Standards.ISO.Country.Primary.Alpha2 where
+module Data.Standards.ISO.Country.Primary.Alpha2
+    ( Alpha2 ( .. )
+    , Status ( .. )
+    , codeStatus
+    ) where
 
-import qualified Data.Standards.ISO.Country.Primary.Common as C
+import Data.Standards.ISO.Country.Primary.Common
 
 import qualified Data.Hashable as H
 
@@ -105,8 +109,8 @@ data Alpha2
     | ER  -- ^ Eritrea
     | ES  -- ^ Spain
     | ET  -- ^ Ethiopia
-    | EU  -- ^ 'ExceptionalReservation': European Union
-    | EZ  -- ^ 'ExceptionalReservation': Eurozone
+    | EU  -- ^ 'ExceptionalReservation': European Union (the)
+    | EZ  -- ^ 'ExceptionalReservation': Eurozone (the)
 
     | FI  -- ^ Finland
     | FJ  -- ^ Fiji
@@ -143,7 +147,7 @@ data Alpha2
     | HT  -- ^ Haiti
     | HU  -- ^ Hungary
 
-    | IC  -- ^ 'ExceptionalReservation': Canary Islands
+    | IC  -- ^ 'ExceptionalReservation': Canary Islands (the)
     | ID  -- ^ Indonesia
     | IE  -- ^ Ireland
     | IL  -- ^ Israel
@@ -217,7 +221,7 @@ data Alpha2
     | NO  -- ^ Norway
     | NP  -- ^ Nepal
     | NR  -- ^ Nauru
-    | NT  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone
+    | NT  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone (the)
     | NU  -- ^ Niue
     | NZ  -- ^ New Zealand
 
@@ -263,7 +267,7 @@ data Alpha2
     | SR  -- ^ Suriname
     | SS  -- ^ South Sudan
     | ST  -- ^ Sao Tome and Principe
-    | SU  -- ^ 'ExceptionalReservation': USSR
+    | SU  -- ^ 'ExceptionalReservation': USSR (the)
     | SV  -- ^ El Salvador
     | SX  -- ^ Sint Maarten (Dutch part)
     | SY  -- ^ Syrian Arab Republic
@@ -290,9 +294,9 @@ data Alpha2
 
     | UA  -- ^ Ukraine
     | UG  -- ^ Uganda
-    | UK  -- ^ 'ExceptionalReservation': United Kingdom
+    | UK  -- ^ 'ExceptionalReservation': United Kingdom (the)
     | UM  -- ^ United States Minor Outlying Islands (the)
-    | UN  -- ^ 'ExceptionalReservation': United Nations
+    | UN  -- ^ 'ExceptionalReservation': United Nations (the)
     | US  -- ^ United States of America (the)
     | UY  -- ^ Uruguay
     | UZ  -- ^ Uzbekistan
@@ -322,24 +326,24 @@ instance H.Hashable Alpha2 where
     hashWithSalt = H.hashUsing fromEnum
 
 -- | The stability of any particular country code.
-codeStatus :: Alpha2 -> C.Status
-codeStatus AC = C.ExceptionalReservation
-codeStatus AN = C.TransitionalReservation
-codeStatus BU = C.TransitionalReservation
-codeStatus CP = C.ExceptionalReservation
-codeStatus CS = C.TransitionalReservation
-codeStatus DG = C.ExceptionalReservation
-codeStatus EA = C.ExceptionalReservation
-codeStatus EU = C.ExceptionalReservation
-codeStatus EZ = C.ExceptionalReservation
-codeStatus FX = C.ExceptionalReservation
-codeStatus IC = C.ExceptionalReservation
-codeStatus NT = C.TransitionalReservation
-codeStatus SU = C.ExceptionalReservation
-codeStatus TA = C.ExceptionalReservation
-codeStatus TP = C.TransitionalReservation
-codeStatus UK = C.ExceptionalReservation
-codeStatus UN = C.ExceptionalReservation
-codeStatus YU = C.TransitionalReservation
-codeStatus ZR = C.TransitionalReservation
-codeStatus _ = C.Official
+codeStatus :: Alpha2 -> Status
+codeStatus AC = ExceptionalReservation
+codeStatus AN = TransitionalReservation
+codeStatus BU = TransitionalReservation
+codeStatus CP = ExceptionalReservation
+codeStatus CS = TransitionalReservation
+codeStatus DG = ExceptionalReservation
+codeStatus EA = ExceptionalReservation
+codeStatus EU = ExceptionalReservation
+codeStatus EZ = ExceptionalReservation
+codeStatus FX = ExceptionalReservation
+codeStatus IC = ExceptionalReservation
+codeStatus NT = TransitionalReservation
+codeStatus SU = ExceptionalReservation
+codeStatus TA = ExceptionalReservation
+codeStatus TP = TransitionalReservation
+codeStatus UK = ExceptionalReservation
+codeStatus UN = ExceptionalReservation
+codeStatus YU = TransitionalReservation
+codeStatus ZR = TransitionalReservation
+codeStatus _ = Official
