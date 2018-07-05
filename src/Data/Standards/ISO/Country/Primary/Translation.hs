@@ -1,3 +1,5 @@
+{-# OPTIONS -Wno-deprecations #-}
+
 {- | Module      : Data.Standards.ISO.Country.Primary.Translation
  -   Description : Convert between various code formats described by ISO 3166-1.
  -   Copyright   : (c) 2018 Samuel May
@@ -58,6 +60,7 @@ tuples =
     , (Just A2.AI, Just A3.AIA, Just N.C660)  -- Anguilla
     , (Just A2.AL, Just A3.ALB, Just N.C008)  -- Albania
     , (Just A2.AM, Just A3.ARM, Just N.C051)  -- Armenia
+    , (Just A2.AN, Just A3.ANT, Just N.C530)  -- Netherlands Antilles
     , (Just A2.AO, Just A3.AGO, Just N.C024)  -- Angola
     , (Just A2.AQ, Just A3.ATA, Just N.C010)  -- Antarctica
     , (Just A2.AR, Just A3.ARG, Just N.C032)  -- Argentina
@@ -85,6 +88,7 @@ tuples =
     , (Just A2.BR, Just A3.BRA, Just N.C076)  -- Brazil
     , (Just A2.BS, Just A3.BHS, Just N.C044)  -- Bahamas (the)
     , (Just A2.BT, Just A3.BTN, Just N.C064)  -- Bhutan
+    , (Just A2.BU, Just A3.BUR, Nothing    )  -- Burma
     , (Just A2.BV, Just A3.BVT, Just N.C074)  -- Bouvet Island
     , (Just A2.BW, Just A3.BWA, Just N.C072)  -- Botswana
     , (Just A2.BY, Just A3.BLR, Just N.C112)  -- Belarus
@@ -104,6 +108,8 @@ tuples =
     , (Just A2.CO, Just A3.COL, Just N.C170)  -- Colombia
     , (Just A2.CP, Just A3.CPT, Nothing    )  -- Clipperton Island
     , (Just A2.CR, Just A3.CRI, Just N.C188)  -- Costa Rica
+    , (Nothing   , Just A3.CSK, Just N.C200)  -- Czechoslovakia
+    , (Just A2.CS, Just A3.SCG, Just N.C891)  -- Serbia and Montenegro
     , (Just A2.CU, Just A3.CUB, Just N.C192)  -- Cuba
     , (Just A2.CV, Just A3.CPV, Just N.C132)  -- Cabo Verde
     , (Just A2.CW, Just A3.CUW, Just N.C531)  -- Curaçao
@@ -240,6 +246,7 @@ tuples =
     , (Just A2.NO, Just A3.NOR, Just N.C578)  -- Norway
     , (Just A2.NP, Just A3.NPL, Just N.C524)  -- Nepal
     , (Just A2.NR, Just A3.NRU, Just N.C520)  -- Nauru
+    , (Just A2.NT, Just A3.NTZ, Just N.C536)  -- Saudi Arabian-Iraqi neutral zone
     , (Just A2.NU, Just A3.NIU, Just N.C570)  -- Niue
     , (Just A2.NZ, Just A3.NZL, Just N.C554)  -- New Zealand
 
@@ -304,6 +311,7 @@ tuples =
     , (Just A2.TN, Just A3.TUN, Just N.C788)  -- Tunisia
     , (Just A2.TO, Just A3.TON, Just N.C776)  -- Tonga
     , (Just A2.TR, Just A3.TUR, Just N.C792)  -- Turkey
+    , (Just A2.TP, Just A3.TMP, Nothing    )  -- East Timor
     , (Just A2.TT, Just A3.TTO, Just N.C780)  -- Trinidad and Tobago
     , (Just A2.TV, Just A3.TUV, Just N.C798)  -- Tuvalu
     , (Just A2.TW, Just A3.TWN, Just N.C158)  -- Taiwan (Province of China)
@@ -331,10 +339,12 @@ tuples =
 
     , (Just A2.YE, Just A3.YEM, Just N.C887)  -- Yemen
     , (Just A2.YT, Just A3.MYT, Just N.C175)  -- Mayotte
+    , (Just A2.YU, Just A3.YUG, Just N.C890)  -- Yugoslavia
 
     , (Just A2.ZA, Just A3.ZAF, Just N.C710)  -- South Africa
     , (Just A2.ZM, Just A3.ZMB, Just N.C894)  -- Zambia
     , (Just A2.ZW, Just A3.ZWE, Just N.C716)  -- Zimbabwe
+    , (Just A2.ZR, Just A3.ZAR, Nothing    )  -- Zaire
     ]
 
 -- | Cache 'Alpha2' -> 'Alpha3' conversions, and provide faster lookup.

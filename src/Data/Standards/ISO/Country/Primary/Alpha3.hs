@@ -12,6 +12,17 @@ import qualified Data.Standards.ISO.Country.Primary.Common as C
 
 import qualified Data.Hashable as H
 
+{-# DEPRECATED ANT "Divided into BES, CUW and SXM, or use ISO 3166-3 code ANHH" #-}
+{-# DEPRECATED BUR "Use new code MMR or ISO 3166-3 code BUMM" #-}
+{-# DEPRECATED BYS "Use new code BLR or ISO 3166-3 code BYAA" #-}
+{-# DEPRECATED CSK "Divided into CZE and SVK, or use ISO 3166-3 code CSHH" #-}
+{-# DEPRECATED NTZ "Divided between IRQ and SAU, or use ISO 3166-3 code NTHH" #-}
+{-# DEPRECATED ROM "Use new code ROU" #-}
+{-# DEPRECATED SCG "Divided into MNE and SRB, or use ISO 3166-3 code CSXX" #-}
+{-# DEPRECATED TMP "Use new code TLS or ISO 3166-3 code TPTL" #-}
+{-# DEPRECATED YUG "Use ISO 3166-3 code YUCS" #-}
+{-# DEPRECATED ZAR "Use new code COD or ISO 3166-3 code ZRCD" #-}
+
 -- | The official codes for countries with less collisions and therefore more
 -- similar to the full name, translated into a type-safe representation.  Unless
 -- otherwise specified, all codes are 'Official'.
@@ -23,6 +34,7 @@ data Alpha3
     | ALA  -- ^ Åland Islands
     | ALB  -- ^ Albania
     | AND  -- ^ Andorra
+    | ANT  -- ^ 'TransitionalReservation': Netherlands Antilles
     | ARE  -- ^ United Arab Emirates (the)
     | ARG  -- ^ Argentina
     | ARM  -- ^ Armenia
@@ -54,8 +66,10 @@ data Alpha3
     | BRB  -- ^ Barbados
     | BRN  -- ^ Brunei Darussalam
     | BTN  -- ^ Bhutan
+    | BUR  -- ^ 'TransitionalReservation': Burma
     | BVT  -- ^ Bouvet Island
     | BWA  -- ^ Botswana
+    | BYS  -- ^ 'TransitionalReservation': Byelorussian SSR
 
     | CAF  -- ^ Central African Republic (the)
     | CAN  -- ^ Canada
@@ -73,6 +87,7 @@ data Alpha3
     | CPT  -- ^ 'ExceptionalReservation': Clipperton Island
     | CPV  -- ^ Cabo Verde
     | CRI  -- ^ Costa Rica
+    | CSK  -- ^ 'TransitionalReservation': Czechoslovakia
     | CUB  -- ^ Cuba
     | CUW  -- ^ Curaçao
     | CXR  -- ^ Christmas Island
@@ -203,6 +218,7 @@ data Alpha3
     | NOR  -- ^ Norway
     | NPL  -- ^ Nepal
     | NRU  -- ^ Nauru
+    | NTZ  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone
     | NZL  -- ^ New Zealand
 
     | OMN  -- ^ Oman
@@ -225,11 +241,13 @@ data Alpha3
     | QAT  -- ^ Qatar
 
     | REU  -- ^ Réunion
+    | ROM  -- ^ 'TransitionalReservation': Romania
     | ROU  -- ^ Romania
     | RUS  -- ^ Russian Federation (the)
     | RWA  -- ^ Rwanda
 
     | SAU  -- ^ Saudi Arabia
+    | SCG  -- ^ 'TransitionalReservation': Serbia and Montenegro
     | SDN  -- ^ Sudan (the)
     | SEN  -- ^ Senegal
     | SGP  -- ^ Singapore
@@ -264,6 +282,7 @@ data Alpha3
     | TKL  -- ^ Tokelau
     | TKM  -- ^ Turkmenistan
     | TLS  -- ^ Timor-Leste
+    | TMP  -- ^ 'TransitionalReservation': East Timor
     | TON  -- ^ Tonga
     | TTO  -- ^ Trinidad and Tobago
     | TUN  -- ^ Tunisia
@@ -291,8 +310,10 @@ data Alpha3
     | WSM  -- ^ Samoa
 
     | YEM  -- ^ Yemen
+    | YUG  -- ^ 'TransitionalReservation': Yugoslavia
 
     | ZAF  -- ^ South Africa
+    | ZAR  -- ^ 'TransitionalReservation': Zaire
     | ZMB  -- ^ Zambia
     | ZWE  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
@@ -302,4 +323,20 @@ instance H.Hashable Alpha3 where
 
 -- | The stability of any particular country code.
 codeStatus :: Alpha3 -> C.Status
+codeStatus ASC = C.ExceptionalReservation
+codeStatus ANT = C.TransitionalReservation
+codeStatus BUR = C.TransitionalReservation
+codeStatus BYS = C.TransitionalReservation
+codeStatus CPT = C.ExceptionalReservation
+codeStatus CSK = C.TransitionalReservation
+codeStatus DGA = C.ExceptionalReservation
+codeStatus FXX = C.ExceptionalReservation
+codeStatus NTZ = C.TransitionalReservation
+codeStatus ROM = C.TransitionalReservation
+codeStatus SCG = C.TransitionalReservation
+codeStatus SUN = C.ExceptionalReservation
+codeStatus TAA = C.ExceptionalReservation
+codeStatus TMP = C.TransitionalReservation
+codeStatus YUG = C.TransitionalReservation
+codeStatus ZAR = C.TransitionalReservation
 codeStatus _ = C.Official

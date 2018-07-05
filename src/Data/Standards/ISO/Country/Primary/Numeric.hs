@@ -77,6 +77,7 @@ data Numeric
     | C192  -- ^ Cuba
     | C196  -- ^ Cyprus
 
+    | C200  -- ^ 'Withdrawn': Czechoslovakia
     | C203  -- ^ Czechia
     | C204  -- ^ Benin
     | C208  -- ^ Denmark
@@ -178,10 +179,12 @@ data Numeric
     | C520  -- ^ Nauru
     | C524  -- ^ Nepal
     | C528  -- ^ Netherlands (the)
+    | C530  -- ^ 'Withdrawn': Netherlands Antilles
     | C531  -- ^ CuraÃ§ao
     | C533  -- ^ Aruba
     | C534  -- ^ Sint Maarten (Dutch part)
     | C535  -- ^ Bonaire, Sint Eustatius and Saba
+    | C536  -- ^ 'Withdrawn': Saudi Arabian-Iraqi neutral zone
     | C540  -- ^ New Caledonia
     | C548  -- ^ Vanuatu
 
@@ -283,6 +286,8 @@ data Numeric
     | C876  -- ^ Wallis and Futuna
     | C882  -- ^ Samoa
     | C887  -- ^ Yemen
+    | C890  -- ^ 'Withdrawn': Yugoslavia (Socialist Federal Republic of)
+    | C891  -- ^ 'Withdrawn': Serbia and Montenegro
     | C894  -- ^ Zambia
   deriving ( Eq, Show, Read, Enum, Bounded )
 -- | Convert the country code into a unique 'Int' value.
@@ -291,6 +296,11 @@ instance H.Hashable Numeric where
 
 -- | The stability of any particular country code.
 codeStatus :: Numeric -> C.Status
+codeStatus C200 = C.Withdrawn
 codeStatus C249 = C.Withdrawn
+codeStatus C530 = C.Withdrawn
+codeStatus C536 = C.Withdrawn
 codeStatus C810 = C.Withdrawn
+codeStatus C890 = C.Withdrawn
+codeStatus C891 = C.Withdrawn
 codeStatus _ = C.Official

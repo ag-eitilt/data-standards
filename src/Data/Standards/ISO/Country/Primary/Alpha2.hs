@@ -12,6 +12,16 @@ import qualified Data.Standards.ISO.Country.Primary.Common as C
 
 import qualified Data.Hashable as H
 
+{-# WARNING UK "Official country code is GB" #-}
+
+{-# DEPRECATED AN "Divided into BQ, CW and SX, or use ISO 3166-3 code ANHH" #-}
+{-# DEPRECATED BU "Use new code MM or ISO 3166-3 code BUMM" #-}
+{-# DEPRECATED CS "Divided into ME and RS, or use ISO 3166-3 code CSXX; previous usage divided into CZ and SK, or use ISO 3166-3 code CSHH" #-}
+{-# DEPRECATED NT "Divided between IQ and SA, or use ISO 3166-3 code NTHH" #-}
+{-# DEPRECATED TP "Use new code TL or ISO 3166-3 code TPTL" #-}
+{-# DEPRECATED YU "Use ISO 3166-3 code YUCS" #-}
+{-# DEPRECATED ZR "Use new code CD or ISO 3166-3 code ZRCD" #-}
+
 -- | The official, recommended codes for countries, translated into a type-safe
 -- representation.  Unless otherwise specified, all codes are 'Official'.
 data Alpha2
@@ -23,6 +33,7 @@ data Alpha2
     | AI  -- ^ Anguilla
     | AL  -- ^ Albania
     | AM  -- ^ Armenia
+    | AN  -- ^ 'TransitionalReservation': Netherlands Antilles
     | AO  -- ^ Angola
     | AQ  -- ^ Antarctica
     | AR  -- ^ Argentina
@@ -50,6 +61,7 @@ data Alpha2
     | BR  -- ^ Brazil
     | BS  -- ^ Bahamas (the)
     | BT  -- ^ Bhutan
+    | BU  -- ^ 'TransitionalReservation': Burma
     | BV  -- ^ Bouvet Island
     | BW  -- ^ Botswana
     | BY  -- ^ Belarus
@@ -69,6 +81,7 @@ data Alpha2
     | CO  -- ^ Colombia
     | CP  -- ^ 'ExceptionalReservation': Clipperton Island
     | CR  -- ^ Costa Rica
+    | CS  -- ^ 'TransitionalReservation': Serbia and Montenegro; previously Czechoslovakia
     | CU  -- ^ Cuba
     | CV  -- ^ Cabo Verde
     | CW  -- ^ Curaçao
@@ -204,6 +217,7 @@ data Alpha2
     | NO  -- ^ Norway
     | NP  -- ^ Nepal
     | NR  -- ^ Nauru
+    | NT  -- ^ 'TransitionalReservation': Saudi Arabian-Iraqi neutral zone
     | NU  -- ^ Niue
     | NZ  -- ^ New Zealand
 
@@ -268,6 +282,7 @@ data Alpha2
     | TN  -- ^ Tunisia
     | TO  -- ^ Tonga
     | TR  -- ^ Turkey
+    | TP  -- ^ 'TransitionalReservation': East Timor
     | TT  -- ^ Trinidad and Tobago
     | TV  -- ^ Tuvalu
     | TW  -- ^ Taiwan (Province of China)
@@ -295,9 +310,11 @@ data Alpha2
 
     | YE  -- ^ Yemen
     | YT  -- ^ Mayotte
+    | YU  -- ^ 'TransitionalReservation': Yugoslavia
 
     | ZA  -- ^ South Africa
     | ZM  -- ^ Zambia
+    | ZR  -- ^ 'TransitionalReservation': Zaire
     | ZW  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
 -- | Convert the country code into a unique 'Int' value.
@@ -307,15 +324,22 @@ instance H.Hashable Alpha2 where
 -- | The stability of any particular country code.
 codeStatus :: Alpha2 -> C.Status
 codeStatus AC = C.ExceptionalReservation
+codeStatus AN = C.TransitionalReservation
+codeStatus BU = C.TransitionalReservation
 codeStatus CP = C.ExceptionalReservation
+codeStatus CS = C.TransitionalReservation
 codeStatus DG = C.ExceptionalReservation
 codeStatus EA = C.ExceptionalReservation
 codeStatus EU = C.ExceptionalReservation
 codeStatus EZ = C.ExceptionalReservation
 codeStatus FX = C.ExceptionalReservation
 codeStatus IC = C.ExceptionalReservation
+codeStatus NT = C.TransitionalReservation
 codeStatus SU = C.ExceptionalReservation
 codeStatus TA = C.ExceptionalReservation
+codeStatus TP = C.TransitionalReservation
 codeStatus UK = C.ExceptionalReservation
 codeStatus UN = C.ExceptionalReservation
+codeStatus YU = C.TransitionalReservation
+codeStatus ZR = C.TransitionalReservation
 codeStatus _ = C.Official
