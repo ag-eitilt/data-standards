@@ -5,7 +5,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : stable
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Translation
@@ -52,6 +52,8 @@ numericToAlpha3 = flip M.lookup na3
 -- representation.
 tuples :: [(Maybe A2.Alpha2, Maybe A3.Alpha3, Maybe N.Numeric)]
 tuples =
+    --TODO: Allow multiple mappings /to/ 'Numeric' for historic names, but only
+    -- a single one /from/ it (the current).
     [ (Just A2.AC, Just A3.ASC, Nothing    )  -- Ascension Island
     , (Just A2.AD, Just A3.AND, Just N.C020)  -- Andorra
     , (Just A2.AE, Just A3.ARE, Just N.C784)  -- United Arab Emirates (the)

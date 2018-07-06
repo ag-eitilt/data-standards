@@ -3,7 +3,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : provisional
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Numeric
@@ -343,10 +343,47 @@ data Numeric
     | C891  -- ^ 'Withdrawn': Serbia and Montenegro
     | C894  -- ^ Zambia
   deriving ( Eq, Show, Read, Bounded )
+
+-- | The 'Int' values returned or processed by this instance are the true value
+-- of the country code, rather than being incremental.
 instance Enum Numeric where
     toEnum i = read $ 'C' : P.printf "%03d" i
     fromEnum = read . tail . show
 
+    -- The derived instance takes a path through 'fromEnum' and 'toEnum' rather
+    -- than using 'succ' and 'pred'.  This seems like a bug, but if so, it's a
+    -- bug in the Haskell Report not just GHC.
+    -- 
+    -- Relevant sections of the Report: 6.3.4 (which gives rules for 'enumFrom'
+    -- and 'enumFromThen' based on 'enumFromTo' and 'enumFromThenTo' when also
+    -- Bounded that GHC isn't following) and 11.2 (same as above, plus defaults
+    -- for the latter based on 'Int' lists) as well as the definition in the
+    -- Prelude (section 9; the same implementations as GHC despite all being
+    -- 'Int' lists -- running into the same problem with 6.3.4 -- and having a
+    -- note that explicitly says they only make sense for injective mappings).
+    enumFrom = flip enumFromTo maxBound
+    enumFromThen x y = enumFromThenTo x y bound
+       where bound
+               | fromEnum x <= fromEnum y = maxBound
+               | otherwise                = minBound
+
+    enumFromTo x y
+        | x == y                  = [x]
+        | fromEnum x > fromEnum y = []
+        | otherwise               = x : enumFromTo (succ x) y
+
+    enumFromThenTo x1 x2 y
+        | x1 == y   = []
+        | otherwise = x1 : count x1 x2
+      where count x1' x2'
+                | (fromEnum x2' <= fromEnum y) /= forward = [x2]
+                | x1' == x2 = enumFromThenTo x1' x2' y
+                | forward   = count (succ x1') (succ x2')
+                | otherwise = count (pred x1') (pred x2')
+            forward = fromEnum x1 < fromEnum x2
+
+    --TODO: Depending on how the compiler transforms these, it might be better
+    -- to put them into a lookup table; check with benchmarking.
     succ C004 = C008
     succ C008 = C010
     succ C010 = C012
@@ -849,34 +886,6 @@ instance Enum Numeric where
         | c == minBound = error "tried to take `pred' of first tag in enumeration"
         | otherwise     = toEnum . subtract 1 $ fromEnum c
 
-    enumFrom x
-        | x == maxBound = [x]
-        | otherwise     = x : enumFrom (succ x)
-
-    enumFromThen x y
-        | x == y    = []
-        | otherwise = x : count x y
-      where count x' y'
-                | y' == maxBound || y' == minBound = [y]
-                | x' == y   = enumFromThen x' y'
-                | forward   = count (succ x') (succ y')
-                | otherwise = count (pred x') (pred y')
-            forward = fromEnum x < fromEnum y
-
-    enumFromTo x y
-        | x == y                  = [x]
-        | fromEnum x > fromEnum y = []
-        | otherwise               = x : enumFromTo (succ x) y
-
-    enumFromThenTo x1 x2 y
-        | x1 == y   = []
-        | otherwise = x1 : count x1 x2
-      where count x1' x2'
-                | (fromEnum x2' <= fromEnum y) /= forward = [x2]
-                | x1' == x2 = enumFromThenTo x1' x2' y
-                | forward   = count (succ x1') (succ x2')
-                | otherwise = count (pred x1') (pred x2')
-            forward = fromEnum x1 < fromEnum x2
 instance H.Hashable Numeric where
     hashWithSalt = H.hashUsing fromEnum
 

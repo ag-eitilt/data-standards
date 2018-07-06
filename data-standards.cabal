@@ -2,7 +2,7 @@ name:               data-standards
 version:            0.1.0.0
 stability:          pre-alpha
 synopsis:           A collection of standards representable by simple data types.
--- description:         
+--description:        
 license:            MPL-2.0
 license-file:       LICENSE
 author:             Samuel May
@@ -22,7 +22,6 @@ library
                   , Data.Standards.ISO.Country.Primary.Numeric
                   , Data.Standards.ISO.Country.Primary.Translation
   other-modules:    Data.Standards.ISO.Country.Primary.Common
-  -- other-extensions:    
   build-depends:    base >=4.9 && <4.10
                   , hashable
                   , unordered-containers

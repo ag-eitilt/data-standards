@@ -3,7 +3,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : stable
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Common where

@@ -3,7 +3,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : provisional
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Alpha2
@@ -402,6 +402,7 @@ data Alpha2
     | ZR  -- ^ 'TransitionalReservation': Zaire
     | ZW  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
+
 instance H.Hashable Alpha2 where
     hashWithSalt = H.hashUsing fromEnum
 

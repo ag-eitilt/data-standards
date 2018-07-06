@@ -3,7 +3,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : provisional
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Alpha3
@@ -61,16 +61,21 @@ import qualified Data.Hashable as H
 
 {-# WARNING GBD,GBN,GBO,GBP,GBS,UNA,UNK,UNO "Not an official ISO 3166-1 code" #-}
 
+{-# DEPRECATED AFI "Use new code DJI or ISO 3166-3 code AIDJ" #-}
+{-# DEPRECATED ATB "Use new code ATA or ISO 3166-3 code BQAQ" #-}
+{-# DEPRECATED ATN "Use new code ATA or ISO 3166-3 code NQAQ" #-}
 {-# DEPRECATED CTE "Use new code KIR or ISO 3166-3 code CTKI" #-}
 {-# DEPRECATED DDR "Use new code DEU or ISO 3166-3 code DDDE" #-}
+{-# DEPRECATED DHY "Use new code BEN or ISO 3166-3 code DYBJ" #-}
+{-# DEPRECATED GEL "Divided into KIR and TUV, or use ISO 3166-3 code GEHH" #-}
 {-# DEPRECATED HVO "Use new code BFA or ISO 3166-3 code HVBF" #-}
 {-# DEPRECATED JTN "Use new code UMI or ISO 3166-3 code JTUM" #-}
 {-# DEPRECATED MID "Use new code UMI or ISO 3166-3 code MIUM" #-}
 {-# DEPRECATED NHB "Use new code VUT or ISO 3166-3 code NHVU" #-}
-{-# DEPRECATED ATN "Use new code ATA or ISO 3166-3 code NQAQ" #-}
 {-# DEPRECATED PCI "Divided into FSM, MHL, MNP and PLW, or use ISO 3166-3 code PCHH" #-}
-{-# DEPRECATED PUS "Use new code UMI or ISO 3166-3 code PUUM" #-}
 {-# DEPRECATED PCZ "Use new code PAN or ISO 3166-3 code PZPA" #-}
+{-# DEPRECATED PHI "Use new code PHL" #-}
+{-# DEPRECATED PUS "Use new code UMI or ISO 3166-3 code PUUM" #-}
 {-# DEPRECATED RHO "Use new code ZWE or ISO 3166-3 code RHZW" #-}
 {-# DEPRECATED SKM "Use new code IND or ISO 3166-3 code SKIN" #-}
 {-# DEPRECATED VDR "Use new code VNM or ISO 3166-3 code VDVN" #-}
@@ -430,6 +435,7 @@ data Alpha3
     | ZRE  -- ^ 'IndeterminateReservation': Zaire (road vehicles)
     | ZWE  -- ^ Zimbabwe
   deriving ( Eq, Show, Read, Enum, Bounded )
+
 instance H.Hashable Alpha3 where
     hashWithSalt = H.hashUsing fromEnum
 

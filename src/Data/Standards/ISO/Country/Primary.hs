@@ -5,7 +5,7 @@
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
  -   Maintainer  : ag.eitilt@gmail.com
- -   Stability   : unstable
+ -   Stability   : provisional
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary
