@@ -4,14 +4,14 @@ if left as 'Text', but are large enough to strongly discourage rewriting them
 for each project.  It is no surprise, therefore, that this package is the
 fourth on Hackage to implement ISO 3166-1:
 
-    * "Data.ISO3166\_CountryCodes" from
-      [iso3166-country-codes](https://hackage.haskell.org/package/iso3166-country-codes)
-    * "Data.CountryCodes" from
-      [country-codes](https://hackage.haskell.org/package/country-codes)
-    * "Country" from [country](https://hackage.haskell.org/package/country)
+* "Data.ISO3166\_CountryCodes" from
+  [iso3166-country-codes](https://hackage.haskell.org/package/iso3166-country-codes)
+* "Data.CountryCodes" from
+  [country-codes](https://hackage.haskell.org/package/country-codes)
+* "Country" from [country](https://hackage.haskell.org/package/country)
 
 However, none of those options truly seemed to provide an ideal, /complete/
-experience.  Only one (@country@) provides all three code encodings, but it
+experience.  Only one (`country`) provides all three code encodings, but it
 doesn't expose constructors for pattern matching.  None of them implement the
 other two parts of ISO 3166 (region codes, and historic countries), and the
 only package that makes an effort to do so ("Data.StateCodes" from
@@ -30,8 +30,8 @@ than `encodeNumeric`, for example.
 
 The following standards are implemented:
 
-    * ISO 3166-1 (`Data.Standards.ISO.Country.Primary`)
+* ISO 3166-1 (`Data.Standards.ISO.Country.Primary`)
 
-        * alpha-2 (`Data.Standards.ISO.Country.Primary.Alpha2`)
-        * alpha-3 (`Data.Standards.ISO.Country.Primary.Alpha3`)
-        * numeric (`Data.Standards.ISO.Country.Primary.Numeric`)
+    * alpha-2 (`Data.Standards.ISO.Country.Primary.Alpha2`)
+    * alpha-3 (`Data.Standards.ISO.Country.Primary.Alpha3`)
+    * numeric (`Data.Standards.ISO.Country.Primary.Numeric`)
