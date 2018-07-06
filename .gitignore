@@ -1,11 +1,32 @@
 *.swp
 
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+
+*.aux
+*.hp
 *.prof
+*.eventlog
 *.tix
 
-.cabal-sandbox/
+cabal-dev/
 dist/
+dist-*/
 test/data/
 
+.ghc.environment.*
+
+.cabal-sandbox/
 cabal.sandbox.config
+cabal.project.local*
+
+.hpc
+.hsenv
+
+.stack-work/
+.HTF/
 runhaskell
