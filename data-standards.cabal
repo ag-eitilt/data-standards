@@ -19,6 +19,7 @@ description:        Type-safe representations of the country codes described by
 
 cabal-version:      >=1.10
 extra-source-files: ChangeLog.md
+                  , README.md
 build-type:         Simple
 tested-with:        GHC ==8.0.2
 
