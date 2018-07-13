@@ -3,13 +3,15 @@ author:             Samuel May
 category:           Data
 synopsis:           A collection of standards representable by simple data types.
 
-copyright:          (c) 2018 Samuel May
-license:            MPL-2.0
-license-file:       LICENSE
-
 version:            0.1.0.0
 stability:          provisional
 maintainer:         ag.eitilt@gmail.com
+
+copyright:          (c) 2018 Samuel May
+license:            MPL-2.0
+license-file:       LICENSE
+extra-source-files: ChangeLog.md
+                  , README.md
 
 homepage:           https://github.com/ag-eitilt/data-standards
 bug-reports:        https://github.com/ag-eitilt/data-standards/issues
@@ -18,8 +20,6 @@ description:        Type-safe representations of the country codes described by
                     the ISO 3166-1 specification.
 
 cabal-version:      >=1.10
-extra-source-files: ChangeLog.md
-                  , README.md
 build-type:         Simple
 tested-with:        GHC ==8.0.2
 

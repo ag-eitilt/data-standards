@@ -632,7 +632,7 @@ instance Enum Numeric where
     succ C891 = C894
 
     succ c
-        | c == maxBound = error "tried to take `succ' of last tag in enumeration"
+        | c == maxBound = error "succ(Numeric) tried to take `succ' of last tag in enumeration"
         | otherwise     = toEnum . (+) 1 $ fromEnum c
 
     pred C008 = C004
@@ -883,7 +883,7 @@ instance Enum Numeric where
     pred C894 = C891
 
     pred c
-        | c == minBound = error "tried to take `pred' of first tag in enumeration"
+        | c == minBound = error "pred(Numeric) tried to take `pred' of first tag in enumeration"
         | otherwise     = toEnum . subtract 1 $ fromEnum c
 
 instance H.Hashable Numeric where
