@@ -373,14 +373,17 @@ instance Enum Numeric where
         | otherwise = x : enumFromTo (succ x) y
 
     enumFromThenTo x1 x2 y
-        | x1 == y   = []
+        | past x1 y = []
+        | past x2 y = [x1]
         | otherwise = x1 : count x1 x2
       where forward = x1 < x2
+            (past, step)
+                | forward   = ((>), succ)
+                | otherwise = ((<), pred)
             count x1' x2'
-                | (x2' <= y) /= forward = [x2]
-                | x1' == x2 = enumFromThenTo x1' x2' y
-                | forward   = count (succ x1') (succ x2')
-                | otherwise = count (pred x1') (pred x2')
+                | x1' == x2  = enumFromThenTo x1' x2' y
+                | x2' == y   = [x2]
+                | otherwise  = count (step x1') (step x2')
 
     --TODO: Depending on how the compiler transforms these, it might be better
     -- to put them into a lookup table; check with benchmarking.
