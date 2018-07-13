@@ -401,7 +401,7 @@ data Alpha2
     | ZM  -- ^ Zambia
     | ZR  -- ^ 'TransitionalReservation': Zaire
     | ZW  -- ^ Zimbabwe
-  deriving ( Eq, Show, Read, Enum, Bounded )
+  deriving ( Eq, Show, Read, Ord, Enum, Bounded )
 
 instance H.Hashable Alpha2 where
     hashWithSalt = H.hashUsing fromEnum

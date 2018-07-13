@@ -342,7 +342,7 @@ data Numeric
     | C890  -- ^ 'Withdrawn': Yugoslavia (Socialist Federal Republic of)
     | C891  -- ^ 'Withdrawn': Serbia and Montenegro
     | C894  -- ^ Zambia
-  deriving ( Eq, Show, Read, Bounded )
+  deriving ( Eq, Show, Read, Ord, Bounded )
 
 -- | The 'Int' values returned or processed by this instance are the true value
 -- of the country code, rather than being incremental.
@@ -364,23 +364,23 @@ instance Enum Numeric where
     enumFrom = flip enumFromTo maxBound
     enumFromThen x y = enumFromThenTo x y bound
        where bound
-               | fromEnum x <= fromEnum y = maxBound
-               | otherwise                = minBound
+               | x <= y    = maxBound
+               | otherwise = minBound
 
     enumFromTo x y
-        | x == y                  = [x]
-        | fromEnum x > fromEnum y = []
-        | otherwise               = x : enumFromTo (succ x) y
+        | x == y    = [x]
+        | x > y     = []
+        | otherwise = x : enumFromTo (succ x) y
 
     enumFromThenTo x1 x2 y
         | x1 == y   = []
         | otherwise = x1 : count x1 x2
-      where count x1' x2'
-                | (fromEnum x2' <= fromEnum y) /= forward = [x2]
+      where forward = x1 < x2
+            count x1' x2'
+                | (x2' <= y) /= forward = [x2]
                 | x1' == x2 = enumFromThenTo x1' x2' y
                 | forward   = count (succ x1') (succ x2')
                 | otherwise = count (pred x1') (pred x2')
-            forward = fromEnum x1 < fromEnum x2
 
     --TODO: Depending on how the compiler transforms these, it might be better
     -- to put them into a lookup table; check with benchmarking.

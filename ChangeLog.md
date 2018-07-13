@@ -3,6 +3,7 @@
 ## 0.1.0.1
 
 * "Data.Standards.ISO.Country.Primary" now reexports the types unqualified
+* All ISO 3166-1 code types now have 'Ord' instances
 
 ## 0.1.0.0  -- 2018-07-06
 

@@ -434,7 +434,7 @@ data Alpha3
     | ZMB  -- ^ Zambia
     | ZRE  -- ^ 'IndeterminateReservation': Zaire (road vehicles)
     | ZWE  -- ^ Zimbabwe
-  deriving ( Eq, Show, Read, Enum, Bounded )
+  deriving ( Eq, Show, Read, Ord, Enum, Bounded )
 
 instance H.Hashable Alpha3 where
     hashWithSalt = H.hashUsing fromEnum
