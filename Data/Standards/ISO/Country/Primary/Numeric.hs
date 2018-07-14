@@ -374,7 +374,7 @@ instance Enum Numeric where
     enumFromThenTo x s y
         | past x y  = []
         | otherwise = x : skipOver thenTo
-      where (ln, thenTo)       = break ((==) s) $ fromTo x
+      where (ln, thenTo)       = break (== s) $ fromTo x
             fromTo x1
                 | x1 == y      = [x1]
                 | otherwise    = x1 : fromTo (step x1)
