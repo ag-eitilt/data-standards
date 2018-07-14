@@ -362,22 +362,25 @@ instance Enum Numeric where
     -- 'Int' lists -- running into the same problem with 6.3.4 -- and having a
     -- note that explicitly says they only make sense for injective mappings).
     enumFrom = flip enumFromTo maxBound
+    enumFromTo x y
+        | x > y     = []
+        | x == y    = [x]
+        | otherwise = x : enumFromTo (succ x) y
+
     enumFromThen x s = enumFromThenTo x s bound
        where bound
                | x <= s    = maxBound
                | otherwise = minBound
-
-    enumFromTo x y = enumFromThenTo x (succ x) y
     enumFromThenTo x s y
         | past x y  = []
         | otherwise = x : skipOver thenTo
-      where (ln, thenTo) = break ((==) s) $ fromTo x
+      where (ln, thenTo)       = break ((==) s) $ fromTo x
             fromTo x1
-                | x1 == y   = [x1]
-                | otherwise = x1 : fromTo (step x1)
+                | x1 == y      = [x1]
+                | otherwise    = x1 : fromTo (step x1)
             (past, step)
-                | x <= s    = ((>), succ)
-                | otherwise = ((<), pred)
+                | x <= s       = ((>), succ)
+                | otherwise    = ((<), pred)
             n = length ln
             skipOver []        = []
             skipOver xs@(x1:_) = x1 : skipOver (drop n xs)
