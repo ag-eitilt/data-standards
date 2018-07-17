@@ -30,7 +30,7 @@ source-repository head
 source-repository this
   type:             git
   location:         git://github.com/ag-eitilt/data-standards.git
-  tag:              v0.1.0.0
+  tag:              v0.1.0.1
 
 library
   exposed-modules:  Data.Standards.ISO.Country.Primary
