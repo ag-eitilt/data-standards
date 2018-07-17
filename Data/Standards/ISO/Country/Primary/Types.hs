@@ -1,4 +1,4 @@
-{- | Module      : Data.Standards.ISO.Country.Primary.Common
+{- | Module      : Data.Standards.ISO.Country.Primary.Types
  -   Description : Types used by all representations described by ISO 3166-1.
  -   Copyright   : (c) 2018 Samuel May
  -   License     : MPL-2.0
@@ -6,7 +6,7 @@
  -   Stability   : stable
  -   Portability : portable
  -}
-module Data.Standards.ISO.Country.Primary.Common where
+module Data.Standards.ISO.Country.Primary.Types where
 
 -- | Categories within the standard describing how much warning is given if a
 -- code were to change or be replaced.

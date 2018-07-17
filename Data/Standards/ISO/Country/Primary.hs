@@ -9,15 +9,20 @@
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary
-    ( module Data.Standards.ISO.Country.Primary.Translation
-    , Alpha2 ( .. )
+    ( Alpha2 ( .. )
     , Alpha3 ( .. )
     , Numeric ( .. )
     , Status ( .. )
+    , Country
+    , packAlpha2
+    , packAlpha3
+    , packNumeric
+    , unpackAlpha2
+    , unpackAlpha3
+    , unpackNumeric
     ) where
 
 import Data.Standards.ISO.Country.Primary.Alpha2
 import Data.Standards.ISO.Country.Primary.Alpha3
 import Data.Standards.ISO.Country.Primary.Numeric
-
 import Data.Standards.ISO.Country.Primary.Translation

@@ -12,7 +12,7 @@ module Data.Standards.ISO.Country.Primary.Numeric
     , codeStatus
     ) where
 
-import Data.Standards.ISO.Country.Primary.Common
+import Data.Standards.ISO.Country.Primary.Types
 
 import qualified Data.Hashable as H
 import qualified Text.Printf as P

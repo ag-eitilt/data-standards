@@ -12,7 +12,7 @@ module Data.Standards.ISO.Country.Primary.Alpha2
     , codeStatus
     ) where
 
-import Data.Standards.ISO.Country.Primary.Common
+import Data.Standards.ISO.Country.Primary.Types
 
 import qualified Data.Hashable as H
 

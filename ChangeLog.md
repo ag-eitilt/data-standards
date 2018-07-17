@@ -1,5 +1,10 @@
 # Revision history for data-standards
 
+## 0.1.1.0
+
+* Data.Standards.ISO.Country.Primary.Translation: Deprecate individual
+  conversions in favor of an opaque collective class ('Country')
+
 ## 0.1.0.1
 
 * "Data.Standards.ISO.Country.Primary" now reexports the types unqualified
