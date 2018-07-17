@@ -21,7 +21,7 @@ description:        Type-safe representations of the country codes described by
 
 cabal-version:      >=1.10
 build-type:         Simple
-tested-with:        GHC ==8.0.2 && ==8.4.3
+tested-with:        GHC ==8.0.2, GHC ==8.4.3
 
 source-repository head
   type:             git
@@ -30,7 +30,7 @@ source-repository head
 source-repository this
   type:             git
   location:         git://github.com/ag-eitilt/data-standards.git
-  tag:              v0.1.0.0
+  tag:              v0.1.1.0
 
 library
   exposed-modules:  Data.Standards.ISO.Country.Primary
