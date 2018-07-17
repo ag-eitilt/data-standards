@@ -375,7 +375,7 @@ data Alpha3
     | SVK  -- ^ Slovakia
     | SVN  -- ^ Slovenia
     | SWE  -- ^ Sweden
-    | SWZ  -- ^ Swaziland
+    | SWZ  -- ^ Eswatini
     | SXM  -- ^ Sint Maarten (Dutch part)
     | SYC  -- ^ Seychelles
     | SYR  -- ^ Syrian Arab Republic

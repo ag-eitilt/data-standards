@@ -6,6 +6,7 @@
 * All ISO 3166-1 code types now have 'Ord' instances
 * 'enumFromThen' and 'enumFromThenTo' over 'Numeric' no longer throw an error
   if the max bound was included in the sequence
+* Updated doumentation to reflect new name for Eswatini (SZ/SWZ/748)
 
 ## 0.1.0.0  -- 2018-07-06
 

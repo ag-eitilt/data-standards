@@ -298,7 +298,7 @@ data Numeric
     | C736  -- ^ 'Withdrawn': Sudan (the)
     | C740  -- ^ Suriname
     | C744  -- ^ Svalbard and Jan Mayen
-    | C748  -- ^ Swaziland
+    | C748  -- ^ Eswatini
 
     | C752  -- ^ Sweden
     | C756  -- ^ Switzerland

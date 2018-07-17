@@ -344,7 +344,7 @@ data Alpha2
     | SV  -- ^ El Salvador
     | SX  -- ^ Sint Maarten (Dutch part)
     | SY  -- ^ Syrian Arab Republic
-    | SZ  -- ^ Swaziland
+    | SZ  -- ^ Eswatini
 
     | TA  -- ^ 'ExceptionalReservation': Tristan da Cunha
     | TC  -- ^ Turks and Caicos Islands (the)
