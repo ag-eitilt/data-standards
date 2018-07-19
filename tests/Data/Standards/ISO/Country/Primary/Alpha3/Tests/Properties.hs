@@ -3,7 +3,7 @@
 
 {-# OPTIONS -Wno-orphans #-}
 
-module Data.Standards.ISO.Country.Primary.Alpha3.Tests where
+module Data.Standards.ISO.Country.Primary.Alpha3.Tests.Properties where
 
 import Data.Standards.ISO.Country.Primary.Alpha3
 

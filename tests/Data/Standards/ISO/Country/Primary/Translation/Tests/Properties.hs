@@ -2,12 +2,12 @@
 
 {-# OPTIONS -Wno-orphans #-}
 
-module Data.Standards.ISO.Country.Primary.Translation.Tests where
+module Data.Standards.ISO.Country.Primary.Translation.Tests.Properties where
 
 import Data.Standards.ISO.Country.Primary.Translation
-import Data.Standards.ISO.Country.Primary.Alpha2.Tests ()
-import Data.Standards.ISO.Country.Primary.Alpha3.Tests ()
-import Data.Standards.ISO.Country.Primary.Numeric.Tests ()
+import Data.Standards.ISO.Country.Primary.Alpha2.Tests.Properties ()
+import Data.Standards.ISO.Country.Primary.Alpha3.Tests.Properties ()
+import Data.Standards.ISO.Country.Primary.Numeric.Tests.Properties ()
 
 import qualified Test.SmallCheck.Series as S
 

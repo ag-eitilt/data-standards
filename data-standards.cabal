@@ -33,7 +33,10 @@ source-repository this
   tag:              v0.1.1.0
 
 flag test-properties
-    description:    Enable support for property-based testing
+    description:    Expose low-level interfaces for property-based testing.
+                    
+                    Note that, since these are the only tests as yet written,
+                    this flag needs to be enabled for /any/ tests to be built.
     default:        False
     manual:         True
 
@@ -59,7 +62,10 @@ test-suite properties
   type:             exitcode-stdio-1.0
   hs-source-dirs:   tests
   main-is:          Data/Standards/Tests/Properties/Main.hs
-  other-modules:    Data.Standards.ISO.Country.Primary.Translation.Tests
+  other-modules:    Data.Standards.ISO.Country.Primary.Alpha2.Tests.Properties
+                  , Data.Standards.ISO.Country.Primary.Alpha3.Tests.Properties
+                  , Data.Standards.ISO.Country.Primary.Numeric.Tests.Properties
+                  , Data.Standards.ISO.Country.Primary.Translation.Tests.Properties
   build-depends:    data-standards
                   , base
                   , smallcheck >=1.0 && <1.2

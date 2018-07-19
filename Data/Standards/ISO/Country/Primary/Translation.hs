@@ -78,7 +78,7 @@ instance CountryCode N.Numeric where
     unpack (A3 cc) = M.lookup cc a3n
     unpack (N cc)  = Just cc
 
-{-# DEPRECATED alpha2ToAlpha3,alpha2ToNumeric "Pack and unpack via CountryCode instead" #-}
+{-# DEPRECATED alpha2ToAlpha3,alpha2ToNumeric,alpha3ToAlpha2,alpha3ToNumeric,numericToAlpha2,numericToAlpha3 "Pack and unpack via CountryCode instead" #-}
 
 -- | Convert an 'Alpha2' country code to an 'Alpha3'.
 alpha2ToAlpha3 :: A2.Alpha2 -> Maybe A3.Alpha3
@@ -104,7 +104,7 @@ numericToAlpha2 = unpack . pack
 numericToAlpha3 :: N.Numeric -> Maybe A3.Alpha3
 numericToAlpha3 = unpack . pack
 
--- | Shorthand for defining 'tuples'.
+-- | Shorthand for defining names in the master list.
 t :: String -> Maybe T.Text
 t = Just . S.fromString
 
