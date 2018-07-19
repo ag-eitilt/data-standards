@@ -3,7 +3,7 @@ author:             Samuel May
 category:           Data
 synopsis:           A collection of standards representable by simple data types.
 
-version:            0.1.0.1
+version:            0.1.0.2
 stability:          provisional
 maintainer:         ag.eitilt@gmail.com
 
@@ -30,7 +30,7 @@ source-repository head
 source-repository this
   type:             git
   location:         git://github.com/ag-eitilt/data-standards.git
-  tag:              v0.1.0.1
+  tag:              v0.1.0.2
 
 library
   exposed-modules:  Data.Standards.ISO.Country.Primary
