@@ -30,3 +30,4 @@ data Status
     -- referred to has been reassigned or no longer exists, and so (unless it's
     -- 'Numeric') it may be reused at any point.
     | Withdrawn
+  deriving ( Eq, Show, Read, Ord, Enum, Bounded )

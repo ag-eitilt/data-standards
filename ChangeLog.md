@@ -7,6 +7,10 @@
   datatype ('Country')
 * Add 'CountryCode a' and 'Country'
 
+## 0.1.0.2
+
+* Added instance declarations for 'Status'
+
 ## 0.1.0.1
 
 * "Data.Standards.ISO.Country.Primary" now reexports the types unqualified
