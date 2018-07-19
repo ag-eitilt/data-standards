@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 {-# OPTIONS -Wno-deprecations #-}
 
 {- | Module      : Data.Standards.ISO.Country.Primary.Translation
@@ -9,7 +11,10 @@
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Translation
-    ( Country  -- without constructors
+    ( Country  -- without constructors unless we need them for test instances
+#if TEST_PROPERTIES
+        ( .. )
+#endif
     , CountryCode ( .. )
       -- * Deprecated
     , alpha2ToAlpha3
