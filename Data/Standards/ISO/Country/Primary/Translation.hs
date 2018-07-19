@@ -44,9 +44,9 @@ instance Eq Country where
     A2 l == A2 r = l == r
     A3 l == A3 r = l == r
     N l == N r   = l == r
-    A2 l == r    = maybe False (== l) $ unpack r
-    A3 l == r    = maybe False (== l) $ unpack r
-    N l == r     = maybe False (== l) $ unpack r
+    A2 l == r    = Just l == unpack r
+    A3 l == r    = Just l == unpack r
+    N l == r     = Just l == unpack r
 --TODO: instance Show Country (with 'pack' rather than 'A2')
 
 -- | Provide a common interface for converting to and from a 'Country'.
