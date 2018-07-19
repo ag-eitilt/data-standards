@@ -14,12 +14,14 @@ module Data.Standards.ISO.Country.Primary
     , Numeric ( .. )
     , Status ( .. )
     , Country
-    , packAlpha2
-    , packAlpha3
-    , packNumeric
-    , unpackAlpha2
-    , unpackAlpha3
-    , unpackNumeric
+    , CountryCode ( .. )
+      -- * Deprecated
+    , alpha2ToAlpha3
+    , alpha2ToNumeric
+    , alpha3ToAlpha2
+    , alpha3ToNumeric
+    , numericToAlpha2
+    , numericToAlpha3
     ) where
 
 import Data.Standards.ISO.Country.Primary.Alpha2

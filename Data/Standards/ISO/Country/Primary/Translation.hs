@@ -9,13 +9,8 @@
  -   Portability : portable
  -}
 module Data.Standards.ISO.Country.Primary.Translation
-    ( Country
-    , packAlpha2
-    , packAlpha3
-    , packNumeric
-    , unpackAlpha2
-    , unpackAlpha3
-    , unpackNumeric
+    ( Country  -- without constructors
+    , CountryCode ( .. )
       -- * Deprecated
     , alpha2ToAlpha3
     , alpha2ToNumeric
@@ -34,61 +29,77 @@ import qualified Data.Maybe as Y
 import qualified Data.String as S
 import qualified Data.Text as T
 
+-- | A generic representation of a country, without a specific type of code.
 data Country
     = A2 A2.Alpha2
     | A3 A3.Alpha3
     | N  N.Numeric
+  deriving ( Show, Read )
+instance Eq Country where
+    A2 l == A2 r = l == r
+    A3 l == A3 r = l == r
+    N l == N r   = l == r
+    A2 l == r    = maybe False (== l) $ unpack r
+    A3 l == r    = maybe False (== l) $ unpack r
+    N l == r     = maybe False (== l) $ unpack r
+--TODO: instance Show Country (with 'pack' rather than 'A2')
 
-packAlpha2 :: A2.Alpha2 -> Country
-packAlpha2 = A2
+-- | Provide a common interface for converting to and from a 'Country'.
+class CountryCode a where
+    pack   :: a -> Country
+    unpack :: Country -> Maybe a
 
-packAlpha3 :: A3.Alpha3 -> Country
-packAlpha3 = A3
+-- | Only available when importing "Data.Standards.ISO.Country.Primary" or
+-- "Data.Standards.ISO.Country.Primary.Translation".
+instance CountryCode A2.Alpha2 where
+    pack = A2
+    unpack (A2 cc) = Just cc
+    unpack (A3 cc) = M.lookup cc a3a2
+    unpack (N cc)  = M.lookup cc na2
 
-packNumeric :: N.Numeric -> Country
-packNumeric = N
+-- | Only available when importing "Data.Standards.ISO.Country.Primary" or
+-- "Data.Standards.ISO.Country.Primary.Translation".
+instance CountryCode A3.Alpha3 where
+    pack = A3
+    unpack (A2 cc) = M.lookup cc a2a3
+    unpack (A3 cc) = Just cc
+    unpack (N cc)  = M.lookup cc na3
 
-unpackAlpha2 :: Country -> Maybe A2.Alpha2
-unpackAlpha2 (A2 cc) = Just cc
-unpackAlpha2 (A3 cc) = M.lookup cc a3a2
-unpackAlpha2 (N cc)  = M.lookup cc na2
+-- | Only available when importing "Data.Standards.ISO.Country.Primary" or
+-- "Data.Standards.ISO.Country.Primary.Translation".
+instance CountryCode N.Numeric where
+    pack = N
+    unpack (A2 cc) = M.lookup cc a2n
+    unpack (A3 cc) = M.lookup cc a3n
+    unpack (N cc)  = Just cc
 
-unpackAlpha3 :: Country -> Maybe A3.Alpha3
-unpackAlpha3 (A2 cc) = M.lookup cc a2a3
-unpackAlpha3 (A3 cc) = Just cc
-unpackAlpha3 (N cc)  = M.lookup cc na3
-
-unpackNumeric :: Country -> Maybe N.Numeric
-unpackNumeric (A2 cc) = M.lookup cc a2n
-unpackNumeric (A3 cc) = M.lookup cc a3n
-unpackNumeric (N cc)  = Just cc
-
-{-# DEPRECATED alpha2ToAlpha3,alpha2ToNumeric "Pack and unpack via Country instead" #-}
+{-# DEPRECATED alpha2ToAlpha3,alpha2ToNumeric "Pack and unpack via CountryCode instead" #-}
 
 -- | Convert an 'Alpha2' country code to an 'Alpha3'.
 alpha2ToAlpha3 :: A2.Alpha2 -> Maybe A3.Alpha3
-alpha2ToAlpha3 = flip M.lookup a2a3
+alpha2ToAlpha3 = unpack . pack
 
 -- | Convert an 'Alpha2' country code to a 'Numeric'.
 alpha2ToNumeric :: A2.Alpha2 -> Maybe N.Numeric
-alpha2ToNumeric = flip M.lookup a2n
+alpha2ToNumeric = unpack . pack
 
 -- | Convert an 'Alpha3' country code to an 'Alpha2'.
 alpha3ToAlpha2 :: A3.Alpha3 -> Maybe A2.Alpha2
-alpha3ToAlpha2 = flip M.lookup a3a2
+alpha3ToAlpha2 = unpack . pack
 
 -- | Convert an 'Alpha3' country code to a 'Numeric'.
 alpha3ToNumeric :: A3.Alpha3 -> Maybe N.Numeric
-alpha3ToNumeric = flip M.lookup a3n
+alpha3ToNumeric = unpack . pack
 
 -- | Convert a 'Numeric' country code to an 'Alpha2'.
 numericToAlpha2 :: N.Numeric -> Maybe A2.Alpha2
-numericToAlpha2 = flip M.lookup na2
+numericToAlpha2 = unpack . pack
 
 -- | Convert a 'Numeric' country code to an 'Alpha3'.
 numericToAlpha3 :: N.Numeric -> Maybe A3.Alpha3
-numericToAlpha3 = flip M.lookup na3
+numericToAlpha3 = unpack . pack
 
+-- | Shorthand for defining 'tuples'.
 t :: String -> Maybe T.Text
 t = Just . S.fromString
 
@@ -408,7 +419,8 @@ tuples =
     , (Just A2.ZR, Just A3.ZAR, Nothing    , t "Zaire")
     ]
 
--- | Cache 'Alpha2' -> 'Alpha3' conversions, and provide faster lookup.
+-- | Cache 'Alpha2' -> 'Alpha3' conversions, and provide easier (but still
+-- slightly slower) lookup.
 a2a3 :: M.HashMap A2.Alpha2 A3.Alpha3
 a2a3 = M.fromList . flip Y.mapMaybe tuples
      $ \(ma2, ma3, _, _) -> do
@@ -416,7 +428,8 @@ a2a3 = M.fromList . flip Y.mapMaybe tuples
          a3 <- ma3
          return (a2, a3)
 
--- | Cache 'Alpha2' -> 'Numeric' conversions, and provide faster lookup.
+-- | Cache 'Alpha2' -> 'Numeric' conversions, and provide easier (but still
+-- slightly slower) lookup.
 a2n :: M.HashMap A2.Alpha2 N.Numeric
 a2n = M.fromList . flip Y.mapMaybe tuples
     $ \(ma2, _, mn, _) -> do
@@ -424,7 +437,8 @@ a2n = M.fromList . flip Y.mapMaybe tuples
         n <- mn
         return (a2, n)
 
--- | Cache 'Alpha3' -> 'Alpha2' conversions, and provide faster lookup.
+-- | Cache 'Alpha3' -> 'Alpha2' conversions, and provide easier (but still
+-- slightly slower) lookup.
 a3a2 :: M.HashMap A3.Alpha3 A2.Alpha2
 a3a2 = M.fromList . flip Y.mapMaybe tuples
      $ \(ma2, ma3, _, _) -> do
@@ -432,7 +446,8 @@ a3a2 = M.fromList . flip Y.mapMaybe tuples
          a3 <- ma3
          return (a3, a2)
 
--- | Cache 'Alpha3' -> 'Numeric' conversions, and provide faster lookup.
+-- | Cache 'Alpha3' -> 'Numeric' conversions, and provide easier (but still
+-- slightly slower) lookup.
 a3n :: M.HashMap A3.Alpha3 N.Numeric
 a3n = M.fromList . flip Y.mapMaybe tuples
     $ \(_, ma3, mn, _) -> do
@@ -440,7 +455,8 @@ a3n = M.fromList . flip Y.mapMaybe tuples
         n <- mn
         return (a3, n)
 
--- | Cache 'Numeric' -> 'Alpha2' conversions, and provide faster lookup.
+-- | Cache 'Numeric' -> 'Alpha2' conversions, and provide easier (but still
+-- slightly slower) lookup.
 na2 :: M.HashMap N.Numeric A2.Alpha2
 na2 = M.fromList . flip Y.mapMaybe tuples
     $ \(ma2, _, mn, _) -> do
@@ -448,7 +464,8 @@ na2 = M.fromList . flip Y.mapMaybe tuples
         n <- mn
         return (n, a2)
 
--- | Cache 'Numeric' -> 'Alpha3' conversions, and provide faster lookup.
+-- | Cache 'Numeric' -> 'Alpha3' conversions, and provide easier (but still
+-- slightly slower) lookup.
 na3 :: M.HashMap N.Numeric A3.Alpha3
 na3 = M.fromList . flip Y.mapMaybe tuples
     $ \(_, ma3, mn, _) -> do

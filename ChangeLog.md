@@ -3,7 +3,9 @@
 ## 0.1.1.0
 
 * Data.Standards.ISO.Country.Primary.Translation: Deprecate individual
-  conversions in favor of an opaque collective class ('Country')
+  conversions in favor of a class ('CountryCode') packing to an opaque common
+  datatype ('Country')
+* Add 'CountryCode a' and 'Country'
 
 ## 0.1.0.1
 
