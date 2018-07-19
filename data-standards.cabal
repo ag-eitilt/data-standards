@@ -69,6 +69,8 @@ test-suite properties
   build-depends:    data-standards
                   , base
                   , smallcheck >=1.0 && <1.2
+                  , tasty
+                  , tasty-smallcheck
   default-language: Haskell2010
   other-extensions: DeriveGeneric
                   , FlexibleInstances
