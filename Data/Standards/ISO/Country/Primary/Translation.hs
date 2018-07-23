@@ -35,6 +35,8 @@ import qualified Data.String as S
 import qualified Data.Text as T
 
 -- | A generic representation of a country, without a specific type of code.
+-- 
+-- @since 0.1.1
 data Country
     = A2 A2.Alpha2
     | A3 A3.Alpha3
@@ -50,12 +52,16 @@ instance Eq Country where
 --TODO: instance Show Country (with 'pack' rather than 'A2')
 
 -- | Provide a common interface for converting to and from a 'Country'.
+-- 
+-- @since 0.1.1
 class CountryCode a where
     pack   :: a -> Country
     unpack :: Country -> Maybe a
 
 -- | Only available when importing "Data.Standards.ISO.Country.Primary" or
 -- "Data.Standards.ISO.Country.Primary.Translation".
+-- 
+-- @since 0.1.1
 instance CountryCode A2.Alpha2 where
     pack = A2
     unpack (A2 cc) = Just cc
@@ -64,6 +70,8 @@ instance CountryCode A2.Alpha2 where
 
 -- | Only available when importing "Data.Standards.ISO.Country.Primary" or
 -- "Data.Standards.ISO.Country.Primary.Translation".
+-- 
+-- @since 0.1.1
 instance CountryCode A3.Alpha3 where
     pack = A3
     unpack (A2 cc) = M.lookup cc a2a3
@@ -72,6 +80,8 @@ instance CountryCode A3.Alpha3 where
 
 -- | Only available when importing "Data.Standards.ISO.Country.Primary" or
 -- "Data.Standards.ISO.Country.Primary.Translation".
+-- 
+-- @since 0.1.1
 instance CountryCode N.Numeric where
     pack = N
     unpack (A2 cc) = M.lookup cc a2n
