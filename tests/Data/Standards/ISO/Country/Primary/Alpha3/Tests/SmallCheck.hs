@@ -3,12 +3,12 @@
 
 {-# OPTIONS -Wno-orphans #-}
 
-module Data.Standards.ISO.Country.Primary.Alpha2.Tests.Properties where
+module Data.Standards.ISO.Country.Primary.Alpha3.Tests.SmallCheck where
 
-import Data.Standards.ISO.Country.Primary.Alpha2
+import Data.Standards.ISO.Country.Primary.Alpha3
 
 import qualified GHC.Generics as G
 import qualified Test.SmallCheck.Series as S
 
-deriving instance G.Generic Alpha2
-instance Monad m => S.Serial m Alpha2
+deriving instance G.Generic Alpha3
+instance Monad m => S.Serial m Alpha3

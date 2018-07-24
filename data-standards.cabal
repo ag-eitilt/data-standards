@@ -62,10 +62,11 @@ test-suite properties
   type:             exitcode-stdio-1.0
   hs-source-dirs:   tests
   main-is:          Data/Standards/Tests/Properties/Main.hs
-  other-modules:    Data.Standards.ISO.Country.Primary.Alpha2.Tests.Properties
-                  , Data.Standards.ISO.Country.Primary.Alpha3.Tests.Properties
-                  , Data.Standards.ISO.Country.Primary.Numeric.Tests.Properties
-                  , Data.Standards.ISO.Country.Primary.Translation.Tests.Properties
+  other-modules:    Data.Standards.ISO.Country.Primary.Alpha2.Tests.SmallCheck
+                  , Data.Standards.ISO.Country.Primary.Alpha3.Tests.SmallCheck
+                  , Data.Standards.ISO.Country.Primary.Numeric.Tests.SmallCheck
+                  , Data.Standards.ISO.Country.Primary.Translation.Tests.SmallCheck
+                  , Data.Standards.ISO.Country.Primary.Translation.Tests.Tasty
   build-depends:    data-standards
                   , base
                   , smallcheck >=1.0 && <1.2

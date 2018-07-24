@@ -1,6 +1,6 @@
 module Main where
 
-import qualified Data.Standards.ISO.Country.Primary.Translation.Tests.Properties as Translation
+import qualified Data.Standards.ISO.Country.Primary.Translation.Tests.Tasty as Translation
 
 import qualified Test.Tasty as T
 
